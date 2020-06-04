@@ -19,7 +19,7 @@ public class CommodityclassificationController {
 
     @RequestMapping("/test")
     public String test(){
-        return "fnjsadkjfkjhsda";
+        return "abc";
     }
 
 }
