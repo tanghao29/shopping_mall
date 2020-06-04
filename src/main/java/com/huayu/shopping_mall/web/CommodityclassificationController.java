@@ -17,4 +17,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/shopping_mall/commodityclassification")
 public class CommodityclassificationController {
 
+    @RequestMapping("/test")
+    public String test(){
+        return "fnjsadkjfkjhsda";
+    }
+
 }
