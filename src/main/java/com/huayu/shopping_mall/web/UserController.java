@@ -42,7 +42,7 @@ public class UserController {
     @GetMapping("/userqueryall")
     @ResponseBody
     public List<User> queryall(){
-        return userService.selectList(null);
+        return userService.list(null);
      }
 
 
@@ -76,18 +76,18 @@ public class UserController {
                     System.out.println("==》"+s);
                     userrole.setUid(user.getUid());
                     userrole.setRid(Integer.parseInt(s));
-                    userroleService.insert(userrole);
+                    userroleService.save(userrole);
                 }
             }
 
         }else{
             userroleService.removeByUid(user.getUid());
-            List<Role> list=roleService.selectList(null);
+            List<Role> list=roleService.list(null);
             Userrole userrole=new Userrole();
             for (Role role : list) {
                 userrole.setUid(user.getUid());
                 userrole.setRid(role.getRid());
-                userroleService.insert(userrole);
+                userroleService.save(userrole);
             }
 
         }

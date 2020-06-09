@@ -36,7 +36,7 @@ public class RoleController {
     public int addRole(Role role){
         int i=0;
         try {
-            roleService.insert(role);
+            roleService.save(role);
         } catch (Exception e) {
             i=1;
             e.printStackTrace();
@@ -52,7 +52,7 @@ public class RoleController {
     @ResponseBody
     @CrossOrigin
     public List<Role> queryAllRole(){
-        return roleService.selectList(null);
+        return roleService.list(null);
     }
 
     /*
@@ -65,7 +65,7 @@ public class RoleController {
     @ResponseBody
     public void deleteRole(Integer rid){
         roleauthorityService.deleteByRid(rid);
-        roleService.deleteById(rid);
+        roleService.removeById(rid);
     }
 
 }

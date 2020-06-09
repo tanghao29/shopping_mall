@@ -57,7 +57,7 @@ public class RoleauthorityController {
             for (int i = 0; i < jid.length; i++) {
                 roleauthority.setRid(rid);
                 roleauthority.setJid(jid[i]);
-                roleauthorityService.insert(roleauthority);
+                roleauthorityService.save(roleauthority);
             }
         }
     }

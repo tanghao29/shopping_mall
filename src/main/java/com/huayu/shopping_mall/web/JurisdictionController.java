@@ -33,7 +33,7 @@ public class JurisdictionController {
     public List<Jurisdiction> queryAllJur(){
 
         List<Jurisdiction> requestlist=new ArrayList<>();
-        List<Jurisdiction> list=jurisdictionService.selectList(null);
+        List<Jurisdiction> list=jurisdictionService.list(null);
         for (int i = 0; i < list.size(); i++) {
             if(null==list.get(i).getJsuperior()){
                 requestlist.add(list.get(i));
