@@ -4,7 +4,7 @@ package com.huayu.shopping_mall.web;
 import com.huayu.shopping_mall.entity.Commodityentry;
 import com.huayu.shopping_mall.service.impl.CommodityentryServiceImpl;
 import com.huayu.shopping_mall.utils.RespPageBean;
-import com.huayu.shopping_mall.vo.CommodityentryVo;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

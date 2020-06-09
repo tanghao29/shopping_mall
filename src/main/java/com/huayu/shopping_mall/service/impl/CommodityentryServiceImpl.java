@@ -5,7 +5,7 @@ import com.huayu.shopping_mall.entity.Commodityentry;
 import com.huayu.shopping_mall.mapper.CommodityentryMapper;
 import com.huayu.shopping_mall.service.ICommodityentryService;
 import com.huayu.shopping_mall.utils.RespPageBean;
-import com.huayu.shopping_mall.vo.CommodityentryVo;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
