@@ -1,7 +1,7 @@
 package com.huayu.shopping_mall.service;
 
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.huayu.shopping_mall.entity.Stockremoval;
-import com.baomidou.mybatisplus.service.IService;
 
 /**
  * <p>

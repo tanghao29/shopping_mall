@@ -1,5 +1,4 @@
 package com.huayu.shopping_mall.service.impl;
-
 import com.huayu.shopping_mall.entity.Roleauthority;
 import com.huayu.shopping_mall.mapper.RoleauthorityMapper;
 import com.huayu.shopping_mall.service.IRoleauthorityService;

@@ -1,9 +1,9 @@
 package com.huayu.shopping_mall.service.impl;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.huayu.shopping_mall.entity.Jurisdiction;
 import com.huayu.shopping_mall.mapper.JurisdictionMapper;
 import com.huayu.shopping_mall.service.IJurisdictionService;
-import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
 /**

@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.RestController;
  * </p>
  *
  * @author mq
- * @since 2020-06-04
+ * @since 2020-06-09
  */
 @RestController
-@RequestMapping("/shopping_mall/userjurisdiction")
-public class UserjurisdictionController {
+@RequestMapping("/shopping_mall/activities")
+public class ActivitiesController {
 
 }

@@ -1,9 +1,10 @@
 package com.huayu.shopping_mall.entity;
 
-import com.baomidou.mybatisplus.enums.IdType;
-import com.baomidou.mybatisplus.annotations.TableId;
-import com.baomidou.mybatisplus.activerecord.Model;
-import java.io.Serializable;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import lombok.Data;
+
+import java.math.BigDecimal;
 
 /**
  * <p>
@@ -13,9 +14,8 @@ import java.io.Serializable;
  * @author mq
  * @since 2020-06-04
  */
-public class Commodity extends Model<Commodity> {
-
-    private static final long serialVersionUID = 1L;
+@Data
+public class Commodity  {
 
     @TableId(value = "cid", type = IdType.AUTO)
     private Integer cid;
@@ -24,59 +24,19 @@ public class Commodity extends Model<Commodity> {
 
     private Integer ceid;
 
+    private String ccname;
+
+    private Integer cenumber;
+
+    private BigDecimal cebuymoney;
+
+    private BigDecimal cesellmoney;
+
+    private String ceimg;
+
     private String cstate;
 
     private Integer ccid;
 
-    public Integer getCid() {
-        return cid;
-    }
 
-    public void setCid(Integer cid) {
-        this.cid = cid;
-    }
-    public String getCname() {
-        return cname;
-    }
-
-    public void setCname(String cname) {
-        this.cname = cname;
-    }
-    public Integer getCeid() {
-        return ceid;
-    }
-
-    public void setCeid(Integer ceid) {
-        this.ceid = ceid;
-    }
-    public String getCstate() {
-        return cstate;
-    }
-
-    public void setCstate(String cstate) {
-        this.cstate = cstate;
-    }
-    public Integer getCcid() {
-        return ccid;
-    }
-
-    public void setCcid(Integer ccid) {
-        this.ccid = ccid;
-    }
-
-    @Override
-    protected Serializable pkVal() {
-        return this.cid;
-    }
-
-    @Override
-    public String toString() {
-        return "Commodity{" +
-        "cid=" + cid +
-        ", cname=" + cname +
-        ", ceid=" + ceid +
-        ", cstate=" + cstate +
-        ", ccid=" + ccid +
-        "}";
-    }
 }
