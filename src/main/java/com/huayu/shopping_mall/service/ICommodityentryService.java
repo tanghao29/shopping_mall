@@ -1,7 +1,7 @@
 package com.huayu.shopping_mall.service;
 
-import com.huayu.shopping_mall.entity.Commodityentry;
 import com.baomidou.mybatisplus.service.IService;
+import com.huayu.shopping_mall.entity.Commodityentry;
 
 /**
  * <p>
@@ -12,5 +12,6 @@ import com.baomidou.mybatisplus.service.IService;
  * @since 2020-06-04
  */
 public interface ICommodityentryService extends IService<Commodityentry> {
+
 
 }

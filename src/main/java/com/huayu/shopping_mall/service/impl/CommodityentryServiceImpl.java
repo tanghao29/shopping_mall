@@ -1,9 +1,9 @@
 package com.huayu.shopping_mall.service.impl;
 
+import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.huayu.shopping_mall.entity.Commodityentry;
 import com.huayu.shopping_mall.mapper.CommodityentryMapper;
 import com.huayu.shopping_mall.service.ICommodityentryService;
-import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
 /**
@@ -16,5 +16,6 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class CommodityentryServiceImpl extends ServiceImpl<CommodityentryMapper, Commodityentry> implements ICommodityentryService {
+
 
 }

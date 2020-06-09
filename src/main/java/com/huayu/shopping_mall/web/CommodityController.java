@@ -1,9 +1,13 @@
 package com.huayu.shopping_mall.web;
 
 
+import com.huayu.shopping_mall.entity.Commodity;
+import com.huayu.shopping_mall.service.ICommodityService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * <p>
@@ -16,5 +20,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/shopping_mall/commodity")
 public class CommodityController {
+
+    @Autowired
+    ICommodityService iCommodityService;
+
+@RequestMapping("/queryList")
+    public List<Commodity> queryList(){
+    System.out.println(iCommodityService.queryCOmmodityList());
+        return iCommodityService.queryCOmmodityList();
+    }
 
 }

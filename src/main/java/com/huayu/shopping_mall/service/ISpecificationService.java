@@ -1,7 +1,9 @@
 package com.huayu.shopping_mall.service;
 
-import com.huayu.shopping_mall.entity.Specification;
 import com.baomidou.mybatisplus.service.IService;
+import com.huayu.shopping_mall.entity.Specification;
+
+import java.util.List;
 
 /**
  * <p>
@@ -12,5 +14,7 @@ import com.baomidou.mybatisplus.service.IService;
  * @since 2020-06-04
  */
 public interface ISpecificationService extends IService<Specification> {
+
+    List<Specification> listSpcification();
 
 }

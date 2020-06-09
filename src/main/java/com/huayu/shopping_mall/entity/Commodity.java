@@ -1,9 +1,12 @@
 package com.huayu.shopping_mall.entity;
 
-import com.baomidou.mybatisplus.enums.IdType;
-import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.activerecord.Model;
+import com.baomidou.mybatisplus.annotations.TableId;
+import com.baomidou.mybatisplus.enums.IdType;
+import lombok.Data;
+
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 /**
  * <p>
@@ -13,6 +16,7 @@ import java.io.Serializable;
  * @author mq
  * @since 2020-06-04
  */
+@Data
 public class Commodity extends Model<Commodity> {
 
     private static final long serialVersionUID = 1L;
@@ -23,6 +27,16 @@ public class Commodity extends Model<Commodity> {
     private String cname;
 
     private Integer ceid;
+
+    private String ccname;
+
+    private Integer cenumber;
+
+    private BigDecimal cebuymoney;
+
+    private BigDecimal cesellmoney;
+
+    private String ceimg;
 
     private String cstate;
 

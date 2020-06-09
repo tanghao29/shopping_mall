@@ -1,10 +1,13 @@
 package com.huayu.shopping_mall.service.impl;
 
+import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.huayu.shopping_mall.entity.Commodity;
 import com.huayu.shopping_mall.mapper.CommodityMapper;
 import com.huayu.shopping_mall.service.ICommodityService;
-import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * <p>
@@ -16,5 +19,13 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class CommodityServiceImpl extends ServiceImpl<CommodityMapper, Commodity> implements ICommodityService {
+
+    @Autowired
+    CommodityMapper commodityMapper;
+
+    @Override
+    public List<Commodity> queryCOmmodityList() {
+        return commodityMapper.queryCOmmodityList();
+    }
 
 }

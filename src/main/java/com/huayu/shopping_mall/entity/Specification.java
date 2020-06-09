@@ -3,6 +3,8 @@ package com.huayu.shopping_mall.entity;
 import com.baomidou.mybatisplus.enums.IdType;
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.activerecord.Model;
+import lombok.Data;
+
 import java.io.Serializable;
 
 /**
@@ -13,6 +15,7 @@ import java.io.Serializable;
  * @author mq
  * @since 2020-06-04
  */
+@Data
 public class Specification extends Model<Specification> {
 
     private static final long serialVersionUID = 1L;
@@ -21,6 +24,8 @@ public class Specification extends Model<Specification> {
     private Integer sid;
 
     private Integer ccid;
+
+    private String ccname;
 
     private String sname;
 

@@ -1,9 +1,11 @@
 package com.huayu.shopping_mall.entity;
 
-import com.baomidou.mybatisplus.enums.IdType;
-import java.util.Date;
-import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.activerecord.Model;
+import com.baomidou.mybatisplus.annotations.TableField;
+import com.baomidou.mybatisplus.annotations.TableId;
+import com.baomidou.mybatisplus.enums.IdType;
+import lombok.Data;
+
 import java.io.Serializable;
 
 /**
@@ -14,6 +16,7 @@ import java.io.Serializable;
  * @author mq
  * @since 2020-06-04
  */
+@Data
 public class Seckill extends Model<Seckill> {
 
     private static final long serialVersionUID = 1L;
@@ -21,83 +24,22 @@ public class Seckill extends Model<Seckill> {
     @TableId(value = "skid", type = IdType.AUTO)
     private Integer skid;
 
-    private Integer cid;
-
-    private Integer sknumber;
-
     private String sktitle;
 
     private String skstate;
 
-    private Date skstarttime;
+    private String skstarttime;
 
-    private Date skendtime;
+    private String skendtime;
 
-    public Integer getSkid() {
-        return skid;
-    }
-
-    public void setSkid(Integer skid) {
-        this.skid = skid;
-    }
-    public Integer getCid() {
-        return cid;
-    }
-
-    public void setCid(Integer cid) {
-        this.cid = cid;
-    }
-    public Integer getSknumber() {
-        return sknumber;
-    }
-
-    public void setSknumber(Integer sknumber) {
-        this.sknumber = sknumber;
-    }
-    public String getSktitle() {
-        return sktitle;
-    }
-
-    public void setSktitle(String sktitle) {
-        this.sktitle = sktitle;
-    }
-    public String getSkstate() {
-        return skstate;
-    }
-
-    public void setSkstate(String skstate) {
-        this.skstate = skstate;
-    }
-    public Date getSkstarttime() {
-        return skstarttime;
-    }
-
-    public void setSkstarttime(Date skstarttime) {
-        this.skstarttime = skstarttime;
-    }
-    public Date getSkendtime() {
-        return skendtime;
-    }
-
-    public void setSkendtime(Date skendtime) {
-        this.skendtime = skendtime;
-    }
+    @TableField(exist = false)
+    private String skstarttimeover;
+    @TableField(exist = false)
+    private String skendtimeover;
 
     @Override
     protected Serializable pkVal() {
         return this.skid;
     }
 
-    @Override
-    public String toString() {
-        return "Seckill{" +
-        "skid=" + skid +
-        ", cid=" + cid +
-        ", sknumber=" + sknumber +
-        ", sktitle=" + sktitle +
-        ", skstate=" + skstate +
-        ", skstarttime=" + skstarttime +
-        ", skendtime=" + skendtime +
-        "}";
-    }
 }
