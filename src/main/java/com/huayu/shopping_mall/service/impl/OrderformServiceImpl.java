@@ -42,11 +42,23 @@ public class OrderformServiceImpl extends ServiceImpl<OrderformMapper, Orderform
         return bean;
     }
 
-
-
-
     @Override
     public Integer updateOrder(Orderform orderform) {
         return orderformMapper.updateByPrimaryKeySelective(orderform);
     }
+
+    public Integer orderformcount(){
+        return orderformMapper.orderformcount();
+    }
+
+    public Integer totalsalescount(){ return  orderformMapper.totalsalescount();}
+
+    public Integer yesterdaytotalsalescount(){
+        return orderformMapper.yesterdaytotalsalescount();
+    }
+
+    public Integer weekcount(){
+        return orderformMapper.weekcount();
+    }
+
 }

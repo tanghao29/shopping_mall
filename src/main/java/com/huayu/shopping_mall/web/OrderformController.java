@@ -5,7 +5,6 @@ import com.huayu.shopping_mall.entity.Orderform;
 import com.huayu.shopping_mall.service.impl.OrderformServiceImpl;
 import com.huayu.shopping_mall.utils.RespBean;
 import com.huayu.shopping_mall.utils.RespPageBean;
-import com.huayu.shopping_mall.vo.OrderformVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -45,6 +44,46 @@ public class OrderformController {
             return RespBean.ok("地址修改成功");
         }
         return RespBean.error("地址修改失败");
+    }
+
+    /*
+    * mengqi
+    * 查询当天的订单总数
+    * */
+    @GetMapping("/orderformcount")
+    @ResponseBody
+    public Integer orderformcount(){
+        return orderformService.orderformcount();
+    }
+
+    /*
+    * mengqi
+    * 查询当天的销售总额
+    * */
+    @GetMapping("/totalsalescount")
+    @ResponseBody
+    public  Integer totalsalescount(){
+        return orderformService.totalsalescount();
+    }
+
+    /*
+     * mengqi
+     * 查询当天的销售总额
+     * */
+    @GetMapping("/yesterdaytotalsalescount")
+    @ResponseBody
+    public  Integer yesterdaytotalsalescount(){
+        return orderformService.yesterdaytotalsalescount();
+    }
+
+    /*
+     * mengqi
+     * 查询近7天的销售总额
+     * */
+    @GetMapping("/weekcount")
+    @ResponseBody
+    public  Integer weekcount(){
+        return orderformService.weekcount();
     }
 
 
