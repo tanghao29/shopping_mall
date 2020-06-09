@@ -1,6 +1,8 @@
 package com.huayu.shopping_mall.service;
 
-import com.baomidou.mybatisplus.service.IService;
+import com.baomidou.mybatisplus.extension.service.IService;
+import com.huayu.shopping_mall.entity.Seckill;
+
 import com.huayu.shopping_mall.entity.Seckill;
 
 import java.util.List;

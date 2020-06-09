@@ -44,15 +44,14 @@ public class SeckillController {
     @ResponseBody
     public Integer seckillAdd(Seckill seckill){
     System.out.println(seckill.toString()+"123132132123132132132123132132132132");
-
-    iSeckillService.insert(seckill);
+    iSeckillService.save(seckill);
         return 200;
     }
 
     @RequestMapping("/selectSeckillById")
     @ResponseBody
     public Seckill selectSeckillById(Integer skid){
-        return iSeckillService.selectById(skid);
+        return iSeckillService.getById(skid);
     }
 
     @RequestMapping("/updateSeckill")

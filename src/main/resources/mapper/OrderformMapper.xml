@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.huayu.shopping_mall.mapper.OrderformMapper">
+
+    <resultMap id="BaseResultMap" type="com.huayu.shopping_mall.entity.Orderform">
+        <id column="ofid" property="ofid" jdbcType="INTEGER"/>
+        <result column="cid" property="cid" jdbcType="INTEGER"/>
+        <result column="ofnumber" property="ofnumber" jdbcType="INTEGER"/>
+        <result column="ofdate" property="ofdate" jdbcType="DATE"/>
+        <result column="ofmoney" property="ofmoney" jdbcType="DECIMAL"/>
+        <result column="ofstate" property="ofstate" jdbcType="VARCHAR"/>
+        <result column="ofshname" property="ofshname" jdbcType="VARCHAR"/>
+        <result column="ofshphone" property="ofshphone" jdbcType="INTEGER"/>
+        <result column="ofshsite" property="ofshsite" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--    分页查询 订单列表 -->
+    <select id="getOrderByPage" resultMap="BaseResultMap">
+        select * from orderform o where 1=1
+        <if test="order.ofshname != null and order.ofshname != ''">
+            and o.ofshname like concat('%',#{order.ofshname},'%')
+        </if>
+        <if test="order.ofshphone != null and order.ofshphone != ''">
+            and o.ofshphone like concat('%',#{order.ofshphone},'%' )
+        </if>
+        <if test="order.ofshsite != null and order.ofshsite != ''">
+            and o.ofshsite like concat('%',#{order.ofshsite},'%')
+        </if>
+        <if test="order.ofstate != null and order.ofstate != ''">
+            and o.ofstate like concat('%',#{order.ofstate},'%')
+        </if>
+        <if test="beginDate != null ">
+            and o.ofdate between #{beginDate[0]} and #{beginDate[1]}
+        </if>
+        <if test="page !=null and size!=null">
+            limit #{page},#{size}
+        </if>
+    </select>
+
+    <!--    查询总条数-->
+    <select id="getTotal" resultType="java.lang.Long">
+        select count(*) from orderform o
+        <where>
+            <if test="order!=null">
+                <if test="order.ofshname != null and order.ofshname != ''">
+                    and o.ofshname like concat('%',#{order.ofshname},'%')
+                </if>
+                <if test="order.ofshphone != null and order.ofshphone != ''">
+                    and o.ofshphone like concat('%',#{order.ofshphone},'%' )
+                </if>
+                <if test="order.ofshsite != null and order.ofshsite != ''">
+                    and o.ofshsite like concat('%',#{order.ofshsite},'%')
+                </if>
+                <if test="order.ofstate != null and order.ofstate != ''">
+                    and o.ofstate like concat('%',#{order.ofstate},'%')
+                </if>
+                <if test="beginDate != null ">
+                    and o.ofdate between #{beginDate[0]} and #{beginDate[1]}
+                </if>
+            </if>
+        </where>
+    </select>
+
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.huayu.shopping_mall.entity.Orderform">
+        update orderform
+        <set>
+            <if test="orderform.ofshsite != null">
+                ofshsite = #{orderform.ofshsite,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{orderform.ofid,jdbcType=INTEGER}
+    </update>
+
+
+</mapper>

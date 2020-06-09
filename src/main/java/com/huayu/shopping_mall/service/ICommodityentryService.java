@@ -1,6 +1,11 @@
 package com.huayu.shopping_mall.service;
 
-import com.baomidou.mybatisplus.service.IService;
+import com.baomidou.mybatisplus.extension.service.IService;
+import com.huayu.shopping_mall.entity.Commodityentry;
+import com.huayu.shopping_mall.utils.RespPageBean;
+
+import java.util.Date;
+
 import com.huayu.shopping_mall.entity.Commodityentry;
 
 /**
@@ -13,5 +18,13 @@ import com.huayu.shopping_mall.entity.Commodityentry;
  */
 public interface ICommodityentryService extends IService<Commodityentry> {
 
-
+    /**
+     * 分页查询入库列表
+     * @param page
+     * @param size
+     * @param commodityentry
+     * @param beginDate
+     * @return
+     */
+    RespPageBean getAllGoodInByPage(Integer page, Integer size, Commodityentry commodityentry, Date[] beginDate);
 }

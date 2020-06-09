@@ -1,9 +1,10 @@
 package com.huayu.shopping_mall.entity;
 
-import com.baomidou.mybatisplus.activerecord.Model;
-import com.baomidou.mybatisplus.annotations.TableField;
-import com.baomidou.mybatisplus.annotations.TableId;
-import com.baomidou.mybatisplus.enums.IdType;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+
+import java.util.Date;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -17,7 +18,8 @@ import java.io.Serializable;
  * @since 2020-06-04
  */
 @Data
-public class Seckill extends Model<Seckill> {
+public class Seckill  {
+
 
     private static final long serialVersionUID = 1L;
 
@@ -37,9 +39,6 @@ public class Seckill extends Model<Seckill> {
     @TableField(exist = false)
     private String skendtimeover;
 
-    @Override
-    protected Serializable pkVal() {
-        return this.skid;
-    }
+
 
 }

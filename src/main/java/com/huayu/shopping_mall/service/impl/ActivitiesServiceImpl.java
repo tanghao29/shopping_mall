@@ -1,9 +1,10 @@
 package com.huayu.shopping_mall.service.impl;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.huayu.shopping_mall.entity.Activities;
 import com.huayu.shopping_mall.mapper.ActivitiesMapper;
 import com.huayu.shopping_mall.service.IActivitiesService;
-import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+
 import org.springframework.stereotype.Service;
 
 /**

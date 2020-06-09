@@ -1,10 +1,11 @@
 package com.huayu.shopping_mall.entity;
 
-import com.baomidou.mybatisplus.enums.IdType;
-import java.util.Date;
-import com.baomidou.mybatisplus.annotations.TableId;
-import com.baomidou.mybatisplus.activerecord.Model;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import lombok.Data;
+
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * <p>
@@ -14,7 +15,8 @@ import java.io.Serializable;
  * @author mq
  * @since 2020-06-04
  */
-public class Stockremoval extends Model<Stockremoval> {
+@Data
+public class Stockremoval  {
 
     private static final long serialVersionUID = 1L;
 
@@ -27,47 +29,5 @@ public class Stockremoval extends Model<Stockremoval> {
 
     private Integer ofid;
 
-    public Integer getSrid() {
-        return srid;
-    }
 
-    public void setSrid(Integer srid) {
-        this.srid = srid;
-    }
-    public Integer getCid() {
-        return cid;
-    }
-
-    public void setCid(Integer cid) {
-        this.cid = cid;
-    }
-    public Date getSrdate() {
-        return srdate;
-    }
-
-    public void setSrdate(Date srdate) {
-        this.srdate = srdate;
-    }
-    public Integer getOfid() {
-        return ofid;
-    }
-
-    public void setOfid(Integer ofid) {
-        this.ofid = ofid;
-    }
-
-    @Override
-    protected Serializable pkVal() {
-        return this.srid;
-    }
-
-    @Override
-    public String toString() {
-        return "Stockremoval{" +
-        "srid=" + srid +
-        ", cid=" + cid +
-        ", srdate=" + srdate +
-        ", ofid=" + ofid +
-        "}";
-    }
 }

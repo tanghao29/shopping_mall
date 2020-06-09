@@ -1,8 +1,7 @@
 package com.huayu.shopping_mall.mapper;
 
-import com.huayu.shopping_mall.entity.Activities;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
-import org.apache.ibatis.annotations.Mapper;
+import com.huayu.shopping_mall.entity.Activities;
 
 /**
  * <p>
