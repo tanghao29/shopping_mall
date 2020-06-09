@@ -1,6 +1,6 @@
 package com.huayu.shopping_mall.service.impl;
 
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.huayu.shopping_mall.entity.Commodity;
 import com.huayu.shopping_mall.mapper.CommodityMapper;
 import com.huayu.shopping_mall.service.ICommodityService;

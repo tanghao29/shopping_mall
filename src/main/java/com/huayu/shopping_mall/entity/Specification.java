@@ -1,12 +1,8 @@
 package com.huayu.shopping_mall.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
-
-
+import com.baomidou.mybatisplus.annotations.TableId;
+import com.baomidou.mybatisplus.enums.IdType;
 import lombok.Data;
-
-import java.io.Serializable;
 
 /**
  * <p>
