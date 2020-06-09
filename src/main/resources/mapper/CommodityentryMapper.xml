@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.huayu.shopping_mall.mapper.CommodityentryMapper">
+
+    <resultMap id="BaseResultMap" type="com.huayu.shopping_mall.entity.Commodityentry">
+        <result column="ceid" property="ceid" jdbcType="INTEGER"/>
+        <result column="cid" property="cid" jdbcType="INTEGER"/>
+        <result column="cenumber" property="cenumber" jdbcType="INTEGER"/>
+        <result column="ceimg" property="ceimg" jdbcType="VARCHAR"/>
+        <result column="uid" property="uid" jdbcType="INTEGER"/>
+        <result column="cedate" property="cedate" jdbcType="DATE"/>
+        <result column="cebuymoney" property="cebuymoney" jdbcType="DECIMAL"/>
+        <result column="cesellmoney" property="cesellmoney" jdbcType="DECIMAL"/>
+    </resultMap>
+
+    <resultMap id="goodsInMap" extends="BaseResultMap" type="com.huayu.shopping_mall.entity.Commodityentry">
+       <association property="commodity" javaType="com.huayu.shopping_mall.entity.Commodity">
+           <id column="cid" property="cid"/>
+           <result column="cname" property="cname"/>
+           <result column="cimage" property="cimage"/>
+       </association>
+        <association property="user" javaType="com.huayu.shopping_mall.entity.User">
+            <id column="uid" property="uid"/>
+            <result column="cname" property="uname"/>
+        </association>
+    </resultMap>
+
+    <select id="getAllGoodInByPage" resultMap="goodsInMap">
+        select goodsIn.*,u.uid as uid,u.uname as uname, co.cid as cid ,
+        co.cname as cname ,co.cimage as cimage
+        from commodityentry goodsIn,commodity co,user u
+        where goodsIn.cid=co.cid and goodsIn.cid=u.uid
+        <if test="commodityentry.cid !=null">
+            and goodsIn.cid like concat('%',#{commodityentry.cid},'%')
+        </if>
+        <if test="commodityentry.uid !=null ">
+            and goodsIn.uid like concat('%',#{commodityentry.uid},'%')
+        </if>
+        <if test="commodityentry.cebuymoney !=null and commodityentry.cebuymoney != ''">
+            and goodsIn.cebuymoney like concat('%',#{commodityentry.cebuymoney},'%')
+        </if>
+        <if test="beginDate != null">
+            and goodsIn.cedate between #{beginDate[0]} and #{beginDate[1]}
+        </if>
+        <if test="page !=null and size!=null">
+            limit #{page},#{size}
+        </if>
+    </select>
+
+    <select id="getTotal" resultType="java.lang.Long">
+        select count(*) from commodityentry
+    </select>
+</mapper>

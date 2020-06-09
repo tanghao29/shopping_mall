@@ -1,21 +1,23 @@
 package com.huayu.shopping_mall.entity;
 
-import com.baomidou.mybatisplus.enums.IdType;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
-import com.baomidou.mybatisplus.annotations.TableId;
-import com.baomidou.mybatisplus.activerecord.Model;
-import java.io.Serializable;
 
 /**
  * <p>
  * 
  * </p>
  *
+ * 商品入库
  * @author mq
  * @since 2020-06-04
  */
-public class Commodityentry extends Model<Commodityentry> {
+public class Commodityentry implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -30,11 +32,31 @@ public class Commodityentry extends Model<Commodityentry> {
 
     private Integer uid;
 
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date cedate;
 
     private BigDecimal cebuymoney;
 
     private BigDecimal cesellmoney;
+
+    private Commodity commodity;
+    private User user;
+
+    public Commodity getCommodity() {
+        return commodity;
+    }
+
+    public void setCommodity(Commodity commodity) {
+        this.commodity = commodity;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public Integer getCeid() {
         return ceid;
@@ -93,10 +115,6 @@ public class Commodityentry extends Model<Commodityentry> {
         this.cesellmoney = cesellmoney;
     }
 
-    @Override
-    protected Serializable pkVal() {
-        return this.ceid;
-    }
 
     @Override
     public String toString() {

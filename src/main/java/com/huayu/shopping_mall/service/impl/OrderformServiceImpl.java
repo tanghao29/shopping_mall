@@ -1,18 +1,26 @@
 package com.huayu.shopping_mall.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.huayu.shopping_mall.entity.Orderform;
 import com.huayu.shopping_mall.mapper.OrderformMapper;
 import com.huayu.shopping_mall.service.IOrderformService;
-import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.huayu.shopping_mall.utils.RespPageBean;
+import com.huayu.shopping_mall.vo.OrderformVo;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
+
 
 /**
  * <p>
- *  服务实现类
+ * 服务实现类
  * </p>
  *
  * @author mq
@@ -26,14 +34,24 @@ public class OrderformServiceImpl extends ServiceImpl<OrderformMapper, Orderform
 
 
     @Override
-    public RespPageBean getOrderByPage(Integer page, Integer size) {
-        if(page !=null && size !=null){
+    public RespPageBean getOrderByPage(Integer page, Integer size,Orderform orderform, Date[] beginDate) {
+        if (page != null && size != null) {
             page = (page - 1) * size;
         }
-        List<Orderform> list = orderformMapper.getOrderByPage(page, size);
-        RespPageBean respPageBean = new RespPageBean();
-        respPageBean.setData(list);
-        respPageBean.setTotal(orderformMapper.getTotal());
-        return respPageBean;
+        List<Orderform> data =  orderformMapper.getOrderByPage(page, size, orderform, beginDate);
+        System.out.println("---------"+data);
+        Long total = orderformMapper.getTotal(orderform, beginDate);
+        System.out.println("---------"+total);
+        RespPageBean bean = new RespPageBean();
+        bean.setTotal(total);
+        bean.setData(data);
+        System.out.println("------------------"+bean);
+        return bean;
+    }
+
+
+    @Override
+    public Integer updateOrder(Orderform orderform) {
+        return orderformMapper.updateByPrimaryKeySelective(orderform);
     }
 }

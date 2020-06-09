@@ -1,9 +1,7 @@
 package com.huayu.shopping_mall.entity;
 
-import com.baomidou.mybatisplus.enums.IdType;
-import com.baomidou.mybatisplus.annotations.TableId;
-import com.baomidou.mybatisplus.activerecord.Model;
-import java.io.Serializable;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 
 /**
  * <p>
@@ -13,7 +11,7 @@ import java.io.Serializable;
  * @author mq
  * @since 2020-06-04
  */
-public class User extends Model<User> {
+public class User {
 
     private static final long serialVersionUID = 1L;
 
@@ -73,10 +71,7 @@ public class User extends Model<User> {
         this.ustate = ustate;
     }
 
-    @Override
-    protected Serializable pkVal() {
-        return this.uid;
-    }
+
 
     @Override
     public String toString() {

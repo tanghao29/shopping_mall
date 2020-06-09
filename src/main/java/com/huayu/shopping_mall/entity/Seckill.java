@@ -1,10 +1,9 @@
 package com.huayu.shopping_mall.entity;
 
-import com.baomidou.mybatisplus.enums.IdType;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+
 import java.util.Date;
-import com.baomidou.mybatisplus.annotations.TableId;
-import com.baomidou.mybatisplus.activerecord.Model;
-import java.io.Serializable;
 
 /**
  * <p>
@@ -14,7 +13,7 @@ import java.io.Serializable;
  * @author mq
  * @since 2020-06-04
  */
-public class Seckill extends Model<Seckill> {
+public class Seckill  {
 
     private static final long serialVersionUID = 1L;
 
@@ -83,10 +82,6 @@ public class Seckill extends Model<Seckill> {
         this.skendtime = skendtime;
     }
 
-    @Override
-    protected Serializable pkVal() {
-        return this.skid;
-    }
 
     @Override
     public String toString() {

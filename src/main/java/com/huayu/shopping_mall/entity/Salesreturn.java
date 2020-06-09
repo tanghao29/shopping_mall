@@ -1,10 +1,10 @@
 package com.huayu.shopping_mall.entity;
 
-import com.baomidou.mybatisplus.enums.IdType;
-import java.util.Date;
-import com.baomidou.mybatisplus.annotations.TableId;
-import com.baomidou.mybatisplus.activerecord.Model;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * <p>
@@ -14,7 +14,7 @@ import java.io.Serializable;
  * @author mq
  * @since 2020-06-04
  */
-public class Salesreturn extends Model<Salesreturn> {
+public class Salesreturn  {
 
     private static final long serialVersionUID = 1L;
 
@@ -83,10 +83,7 @@ public class Salesreturn extends Model<Salesreturn> {
         this.srcldate = srcldate;
     }
 
-    @Override
-    protected Serializable pkVal() {
-        return this.srid;
-    }
+
 
     @Override
     public String toString() {

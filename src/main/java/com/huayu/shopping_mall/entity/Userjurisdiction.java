@@ -1,6 +1,5 @@
 package com.huayu.shopping_mall.entity;
 
-import com.baomidou.mybatisplus.activerecord.Model;
 import java.io.Serializable;
 
 /**
@@ -11,9 +10,9 @@ import java.io.Serializable;
  * @author mq
  * @since 2020-06-04
  */
-public class Userjurisdiction extends Model<Userjurisdiction> {
+public class Userjurisdiction {
 
-    private static final long serialVersionUID = 1L;
+
 
     private Integer uid;
 
@@ -34,10 +33,6 @@ public class Userjurisdiction extends Model<Userjurisdiction> {
         this.jid = jid;
     }
 
-    @Override
-    protected Serializable pkVal() {
-        return this.uid;
-    }
 
     @Override
     public String toString() {

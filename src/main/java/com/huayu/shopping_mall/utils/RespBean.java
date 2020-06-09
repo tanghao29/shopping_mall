@@ -6,6 +6,7 @@ package com.huayu.shopping_mall.utils;
  */
 public class RespBean {
 
+    private Long count=0L;
     private Integer status;
     private String msg;
     private Object obj;
@@ -38,6 +39,14 @@ public class RespBean {
         this.status = status;
         this.msg = msg;
         this.obj = obj;
+    }
+
+    public Long getCount() {
+        return count;
+    }
+
+    public void setCount(Long count) {
+        this.count = count;
     }
 
     public Integer getStatus() {

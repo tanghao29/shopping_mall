@@ -12,6 +12,7 @@ public class RespPageBean {
     private List<?> data;
 
 
+
     public Long getTotal() {
         return total;
     }
