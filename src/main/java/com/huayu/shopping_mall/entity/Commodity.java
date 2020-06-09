@@ -1,10 +1,13 @@
 package com.huayu.shopping_mall.entity;
 
+import lombok.Data;
+
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 /**
  * <p>
@@ -14,6 +17,7 @@ import java.io.Serializable;
  * @author mq
  * @since 2020-06-04
  */
+@Data
 public class Commodity  {
 
     private static final long serialVersionUID = 1L;
@@ -23,21 +27,21 @@ public class Commodity  {
 
     private String cname;
 
-    private String cimage;
-
     private Integer ceid;
+
+    private String ccname;
+
+    private Integer cenumber;
+
+    private BigDecimal cebuymoney;
+
+    private BigDecimal cesellmoney;
+
+    private String ceimg;
 
     private String cstate;
 
     private Integer ccid;
-
-    public String getCimage() {
-        return cimage;
-    }
-
-    public void setCimage(String cimage) {
-        this.cimage = cimage;
-    }
 
     public Integer getCid() {
         return cid;
@@ -76,9 +80,7 @@ public class Commodity  {
     }
 
 
-    protected Serializable pkVal() {
-        return this.cid;
-    }
+
 
     @Override
     public String toString() {

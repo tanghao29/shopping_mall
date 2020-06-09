@@ -2,6 +2,10 @@ package com.huayu.shopping_mall.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.huayu.shopping_mall.entity.Seckill;
+import com.baomidou.mybatisplus.service.IService;
+import com.huayu.shopping_mall.entity.Seckill;
+
+import java.util.List;
 
 /**
  * <p>
@@ -13,4 +17,6 @@ import com.huayu.shopping_mall.entity.Seckill;
  */
 public interface ISeckillService extends IService<Seckill> {
 
+
+    List<Seckill> queryLikeSeckill(Seckill seckill);
 }

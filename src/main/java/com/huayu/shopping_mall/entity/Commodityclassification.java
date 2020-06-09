@@ -2,6 +2,12 @@ package com.huayu.shopping_mall.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.enums.IdType;
+import com.baomidou.mybatisplus.annotations.TableId;
+import com.baomidou.mybatisplus.activerecord.Model;
+import lombok.Data;
+
+import java.io.Serializable;
 
 /**
  * <p>
@@ -11,7 +17,9 @@ import com.baomidou.mybatisplus.annotation.TableId;
  * @author mq
  * @since 2020-06-04
  */
+@Data
 public class Commodityclassification  {
+
 
     private static final long serialVersionUID = 1L;
 
