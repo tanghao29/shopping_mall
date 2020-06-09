@@ -2,7 +2,11 @@ package com.huayu.shopping_mall.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.huayu.shopping_mall.entity.Roleauthority;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
+
+import java.util.List;
 
 /**
  * <p>
@@ -15,4 +19,9 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface RoleauthorityMapper extends BaseMapper<Roleauthority> {
 
+    @Delete("delete from roleauthority where rid=#{value}")
+    public void deleteByRid(Integer rid);
+
+    @Select("select * from  roleauthority where rid=#{value}")
+    public List<Roleauthority> queryRoleauthorityById(Integer rid);
 }
