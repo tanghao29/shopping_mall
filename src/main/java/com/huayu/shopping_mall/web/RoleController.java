@@ -63,9 +63,17 @@ public class RoleController {
     @GetMapping("/deleteRole")
     @CrossOrigin
     @ResponseBody
-    public void deleteRole(Integer rid){
-        roleauthorityService.deleteByRid(rid);
-        roleService.removeById(rid);
+    public int deleteRole(Integer rid){
+        int i=0;
+        try {
+            roleauthorityService.deleteByRid(rid);
+            roleService.removeById(rid);
+        } catch (Exception e) {
+            i=1;
+            e.printStackTrace();
+        }
+
+        return i;
     }
 
 }

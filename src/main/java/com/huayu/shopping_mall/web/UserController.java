@@ -38,10 +38,11 @@ public class UserController {
     /*@author mengqi
     * 查询出所有的用户
     * */
-    @CrossOrigin
+
     @GetMapping("/userqueryall")
     @ResponseBody
     public List<User> queryall(){
+        System.out.println("进来了啊铁子");
         return userService.list(null);
      }
 
