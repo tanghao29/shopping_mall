@@ -4,6 +4,7 @@ package com.huayu.shopping_mall.web;
 import com.huayu.shopping_mall.entity.Commodityentry;
 import com.huayu.shopping_mall.service.impl.CommodityentryServiceImpl;
 import com.huayu.shopping_mall.utils.RespPageBean;
+import com.huayu.shopping_mall.vo.CommodityentryVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,9 +38,10 @@ public class CommodityentryController {
      * @return
      */
     @GetMapping("/")
-    public RespPageBean queryAllCommodityentry(@RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "10") Integer size, Commodityentry commodityentry, Date[] beginDate) {
-        return this.goodsInService.getAllGoodInByPage(page,size,commodityentry,beginDate);
+    public RespPageBean queryAllCommodityentry(@RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "10") Integer size, Commodityentry commodityentry, Date[] beginDate,String uname) {
+        return this.goodsInService.getAllGoodInByPage(page,size,commodityentry,beginDate,uname);
     }
+
 
 
 }

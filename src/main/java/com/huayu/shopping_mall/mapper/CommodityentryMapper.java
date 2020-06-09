@@ -2,6 +2,7 @@ package com.huayu.shopping_mall.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.huayu.shopping_mall.entity.Commodityentry;
+import com.huayu.shopping_mall.vo.CommodityentryVo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -28,7 +29,7 @@ public interface CommodityentryMapper extends BaseMapper<Commodityentry> {
      * @param beginDate
      * @return
      */
-    List<Commodityentry> getAllGoodInByPage(@Param("page") Integer page, @Param("size") Integer size, @Param("commodityentry") Commodityentry commodityentry, @Param("beginDate") Date[] beginDate);
+    List<Commodityentry> getAllGoodInByPage(@Param("page") Integer page, @Param("size") Integer size, @Param("commodityentry") Commodityentry commodityentry, @Param("beginDate") Date[] beginDate,@Param("uname") String uname);
 
-    Long getTotal(@Param("commodityentry") Commodityentry commodityentry, @Param("beginDate") Date[] beginDate);
+    Long getTotal(@Param("commodityentry") Commodityentry commodityentry, @Param("beginDate") Date[] beginDate,@Param("uname") String uname);
 }

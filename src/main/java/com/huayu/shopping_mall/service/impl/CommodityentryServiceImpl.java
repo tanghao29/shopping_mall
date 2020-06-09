@@ -5,6 +5,7 @@ import com.huayu.shopping_mall.entity.Commodityentry;
 import com.huayu.shopping_mall.mapper.CommodityentryMapper;
 import com.huayu.shopping_mall.service.ICommodityentryService;
 import com.huayu.shopping_mall.utils.RespPageBean;
+import com.huayu.shopping_mall.vo.CommodityentryVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,16 +28,17 @@ public class CommodityentryServiceImpl extends ServiceImpl<CommodityentryMapper,
 
 
     @Override
-    public RespPageBean getAllGoodInByPage(Integer page, Integer size, Commodityentry commodityentry, Date[] beginDate) {
+    public RespPageBean getAllGoodInByPage(Integer page, Integer size, Commodityentry commodityentry, Date[] beginDate,String uname) {
 //        if (page != null && size != null) {
 //            page = (page - 1) * size;
 //        }
-        List<Commodityentry> data =  goodsInMapper.getAllGoodInByPage(page,size,commodityentry,beginDate);
-        Long total = goodsInMapper.getTotal(commodityentry,beginDate);
+        List<Commodityentry> data = goodsInMapper.getAllGoodInByPage(page, size, commodityentry, beginDate,uname);
+        Long total = goodsInMapper.getTotal(commodityentry, beginDate,uname);
         RespPageBean respPageBean = new RespPageBean();
         respPageBean.setData(data);
         respPageBean.setTotal(total);
         return respPageBean;
     }
+
 
 }

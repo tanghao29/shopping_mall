@@ -14,30 +14,32 @@
     </resultMap>
 
     <resultMap id="goodsInMap" extends="BaseResultMap" type="com.huayu.shopping_mall.entity.Commodityentry">
-       <association property="commodity" javaType="com.huayu.shopping_mall.entity.Commodity">
-           <id column="cid" property="cid"/>
-           <result column="cname" property="cname"/>
-           <result column="cimage" property="cimage"/>
-       </association>
+        <association property="commodity" javaType="com.huayu.shopping_mall.entity.Commodity">
+            <id column="cid" property="cid"/>
+            <result column="cname" property="cname"/>
+        </association>
         <association property="user" javaType="com.huayu.shopping_mall.entity.User">
             <id column="uid" property="uid"/>
-            <result column="cname" property="uname"/>
+            <result column="uname" property="uname"/>
         </association>
     </resultMap>
 
     <select id="getAllGoodInByPage" resultMap="goodsInMap">
         select goodsIn.*,u.uid as uid,u.uname as uname, co.cid as cid ,
-        co.cname as cname ,co.cimage as cimage
+        co.cname as cname
         from commodityentry goodsIn,commodity co,user u
-        where goodsIn.cid=co.cid and goodsIn.cid=u.uid
+        where goodsIn.cid=co.cid and goodsIn.uid=u.uid
         <if test="commodityentry.cid !=null">
             and goodsIn.cid like concat('%',#{commodityentry.cid},'%')
         </if>
-        <if test="commodityentry.uid !=null ">
-            and goodsIn.uid like concat('%',#{commodityentry.uid},'%')
+        <if test="uname !=null and uname != ''">
+            and u.uname like concat('%',#{uname},'%')
         </if>
         <if test="commodityentry.cebuymoney !=null and commodityentry.cebuymoney != ''">
             and goodsIn.cebuymoney like concat('%',#{commodityentry.cebuymoney},'%')
+        </if>
+        <if test="commodityentry.cesellmoney !=null and commodityentry.cesellmoney != ''">
+            and goodsIn.cesellmoney like concat('%',#{commodityentry.cesellmoney},'%')
         </if>
         <if test="beginDate != null">
             and goodsIn.cedate between #{beginDate[0]} and #{beginDate[1]}
@@ -48,6 +50,23 @@
     </select>
 
     <select id="getTotal" resultType="java.lang.Long">
-        select count(*) from commodityentry
+        select count(*) from commodityentry goodsIn,user u
+        <where>
+            <if test="commodityentry.cid !=null">
+                and goodsIn.cid like concat('%',#{commodityentry.cid},'%')
+            </if>
+            <if test="uname !=null and uname != ''">
+                and u.uname like concat('%',#{uname},'%')
+            </if>
+            <if test="commodityentry.cebuymoney !=null and commodityentry.cebuymoney != ''">
+                and goodsIn.cebuymoney like concat('%',#{commodityentry.cebuymoney},'%')
+            </if>
+            <if test="commodityentry.cesellmoney !=null and commodityentry.cesellmoney != ''">
+                and goodsIn.cesellmoney like concat('%',#{commodityentry.cesellmoney},'%')
+            </if>
+            <if test="beginDate != null">
+                and goodsIn.cedate between #{beginDate[0]} and #{beginDate[1]}
+            </if>
+        </where>
     </select>
 </mapper>

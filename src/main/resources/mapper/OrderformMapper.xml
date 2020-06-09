@@ -8,10 +8,10 @@
         <result column="ofnumber" property="ofnumber" jdbcType="INTEGER"/>
         <result column="ofdate" property="ofdate" jdbcType="DATE"/>
         <result column="ofmoney" property="ofmoney" jdbcType="DECIMAL"/>
-        <result column="ofstate" property="ofstate" jdbcType="VARCHAR"/>
         <result column="ofshname" property="ofshname" jdbcType="VARCHAR"/>
         <result column="ofshphone" property="ofshphone" jdbcType="INTEGER"/>
         <result column="ofshsite" property="ofshsite" jdbcType="VARCHAR"/>
+        <result column="ofstate" property="ofstate" jdbcType="VARCHAR"/>
     </resultMap>
 
     <!--    分页查询 订单列表 -->

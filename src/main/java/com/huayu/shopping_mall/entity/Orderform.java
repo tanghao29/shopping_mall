@@ -29,7 +29,7 @@ public class Orderform implements Serializable {
 
     private Integer ofnumber;
 
-    @JsonFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "Asia/Shanghai")
     private Date ofdate;
 
     private BigDecimal ofmoney;
