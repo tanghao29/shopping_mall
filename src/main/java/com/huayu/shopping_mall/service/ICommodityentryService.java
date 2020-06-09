@@ -5,7 +5,7 @@ import com.huayu.shopping_mall.entity.Commodityentry;
 import com.huayu.shopping_mall.utils.RespPageBean;
 
 import java.util.Date;
-import com.baomidou.mybatisplus.service.IService;
+
 import com.huayu.shopping_mall.entity.Commodityentry;
 
 /**

@@ -20,8 +20,6 @@ import java.math.BigDecimal;
 @Data
 public class Commodity  {
 
-    private static final long serialVersionUID = 1L;
-
     @TableId(value = "cid", type = IdType.AUTO)
     private Integer cid;
 
@@ -43,53 +41,5 @@ public class Commodity  {
 
     private Integer ccid;
 
-    public Integer getCid() {
-        return cid;
-    }
 
-    public void setCid(Integer cid) {
-        this.cid = cid;
-    }
-    public String getCname() {
-        return cname;
-    }
-
-    public void setCname(String cname) {
-        this.cname = cname;
-    }
-    public Integer getCeid() {
-        return ceid;
-    }
-
-    public void setCeid(Integer ceid) {
-        this.ceid = ceid;
-    }
-    public String getCstate() {
-        return cstate;
-    }
-
-    public void setCstate(String cstate) {
-        this.cstate = cstate;
-    }
-    public Integer getCcid() {
-        return ccid;
-    }
-
-    public void setCcid(Integer ccid) {
-        this.ccid = ccid;
-    }
-
-
-
-
-    @Override
-    public String toString() {
-        return "Commodity{" +
-        "cid=" + cid +
-        ", cname=" + cname +
-        ", ceid=" + ceid +
-        ", cstate=" + cstate +
-        ", ccid=" + ccid +
-        "}";
-    }
 }

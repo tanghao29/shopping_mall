@@ -3,9 +3,7 @@ package com.huayu.shopping_mall.entity;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 
-import com.baomidou.mybatisplus.enums.IdType;
-import com.baomidou.mybatisplus.annotations.TableId;
-import com.baomidou.mybatisplus.activerecord.Model;
+
 import lombok.Data;
 
 import java.io.Serializable;
@@ -33,36 +31,4 @@ public class Specification  {
 
     private String sname;
 
-    public Integer getSid() {
-        return sid;
-    }
-
-    public void setSid(Integer sid) {
-        this.sid = sid;
-    }
-    public Integer getCcid() {
-        return ccid;
-    }
-
-    public void setCcid(Integer ccid) {
-        this.ccid = ccid;
-    }
-    public String getSname() {
-        return sname;
-    }
-
-    public void setSname(String sname) {
-        this.sname = sname;
-    }
-
-
-
-    @Override
-    public String toString() {
-        return "Specification{" +
-        "sid=" + sid +
-        ", ccid=" + ccid +
-        ", sname=" + sname +
-        "}";
-    }
 }

@@ -1,5 +1,7 @@
 package com.huayu.shopping_mall.entity;
 
+import lombok.Data;
+
 /**
  * <p>
  * 
@@ -8,6 +10,7 @@ package com.huayu.shopping_mall.entity;
  * @author mq
  * @since 2020-06-04
  */
+@Data
 public class Roleauthority  {
 
 
@@ -16,28 +19,5 @@ public class Roleauthority  {
 
     private Integer jid;
 
-    public Integer getRid() {
-        return rid;
-    }
 
-    public void setRid(Integer rid) {
-        this.rid = rid;
-    }
-    public Integer getJid() {
-        return jid;
-    }
-
-    public void setJid(Integer jid) {
-        this.jid = jid;
-    }
-
-
-
-    @Override
-    public String toString() {
-        return "Roleauthority{" +
-        "rid=" + rid +
-        ", jid=" + jid +
-        "}";
-    }
 }

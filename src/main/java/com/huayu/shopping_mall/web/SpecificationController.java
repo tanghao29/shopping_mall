@@ -4,6 +4,7 @@ import com.huayu.shopping_mall.entity.Specification;
 import com.huayu.shopping_mall.service.ISpecificationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -28,9 +29,9 @@ public class SpecificationController {
         return iSpecificationService.listSpcification();
     }
 
-    @RequestMapping("/deleteById")
+    @RequestMapping(value = "/deleteById")
     public Integer deleteById(Integer sid){
-            iSpecificationService.deleteById(sid);
+            iSpecificationService.removeById(sid);
         return  200;
     }
 

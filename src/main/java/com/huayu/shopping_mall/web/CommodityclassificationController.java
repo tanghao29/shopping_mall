@@ -26,30 +26,31 @@ public class CommodityclassificationController {
 
     @RequestMapping("/queryCcList")
     public List<Commodityclassification> queryCcList(){
-        return iCommodityclassificationService.selectList(null);
+        return iCommodityclassificationService.list(null);
     }
 
     @RequestMapping("/deleteCcById")
     public Integer deleteCcById(Integer ccid){
-        iCommodityclassificationService.deleteById(ccid);
+        iCommodityclassificationService.removeById(ccid);
 return 200;
     }
 
     @RequestMapping("/addCc")
     public Integer addCc(Commodityclassification commodityclassification){
-        iCommodityclassificationService.insert(commodityclassification);
+        iCommodityclassificationService.save(commodityclassification);
         return 200;
     }
 
     @RequestMapping("/queryCommodityById")
     public Commodityclassification queryCommodityById(Integer ccid){
-        return iCommodityclassificationService.selectById(ccid);
+        return iCommodityclassificationService.getById(ccid);
     }
 
     @RequestMapping("/updatecommodtiy")
     public Integer updatecommodtiy(Commodityclassification commodityclassification){
 
-        iCommodityclassificationService.insertOrUpdate(commodityclassification);
+
+        iCommodityclassificationService.saveOrUpdate(commodityclassification);
         return 200;
     }
 
