@@ -1,9 +1,12 @@
 package com.huayu.shopping_mall.entity;
 
-import com.baomidou.mybatisplus.enums.IdType;
-import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.activerecord.Model;
+import com.baomidou.mybatisplus.annotations.TableField;
+import com.baomidou.mybatisplus.annotations.TableId;
+import com.baomidou.mybatisplus.enums.IdType;
+
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * <p>
@@ -25,6 +28,17 @@ public class Jurisdiction extends Model<Jurisdiction> {
     private String jpath;
 
     private Integer jsuperior;
+
+    @TableField(exist = false)
+    private List<Jurisdiction> children;
+
+    public List<Jurisdiction> getChildren() {
+        return children;
+    }
+
+    public void setChildren(List<Jurisdiction> children) {
+        this.children = children;
+    }
 
     public Integer getJid() {
         return jid;

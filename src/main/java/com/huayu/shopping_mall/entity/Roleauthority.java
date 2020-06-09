@@ -2,6 +2,7 @@ package com.huayu.shopping_mall.entity;
 
 import com.baomidou.mybatisplus.activerecord.Model;
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * <p>
@@ -18,6 +19,9 @@ public class Roleauthority extends Model<Roleauthority> {
     private Integer rid;
 
     private Integer jid;
+
+ 
+
 
     public Integer getRid() {
         return rid;
