@@ -34,7 +34,7 @@ public class Commodityentry implements Serializable {
 
     private Integer uid;
 
-    @JsonFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "Asia/Shanghai")
     private Date cedate;
 
     private BigDecimal cebuymoney;

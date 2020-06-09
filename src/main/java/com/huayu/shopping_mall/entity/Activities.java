@@ -5,7 +5,6 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 
 import java.math.BigDecimal;
-import java.util.Date;
 
 /**
  * <p>
@@ -23,6 +22,8 @@ public class Activities {
 
     private Integer cid;
 
+    private String cname;
+
     private Integer skid;
 
     private Integer adnumber;
@@ -33,9 +34,11 @@ public class Activities {
 
     private Integer ceid;
 
-    private Date asksdatetime;
+    private String asksdatetime;
 
-    private Date asjsdatetime;
+    private String asjsdatetime;
+
+    private String asstate;
 
 
 }
