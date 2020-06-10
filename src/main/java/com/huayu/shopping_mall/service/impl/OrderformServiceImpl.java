@@ -2,6 +2,8 @@ package com.huayu.shopping_mall.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.huayu.shopping_mall.entity.Orderform;
+import com.huayu.shopping_mall.entity.Week;
+import com.huayu.shopping_mall.entity.WeekMoney;
 import com.huayu.shopping_mall.mapper.OrderformMapper;
 import com.huayu.shopping_mall.service.IOrderformService;
 import com.huayu.shopping_mall.utils.RespPageBean;
@@ -61,4 +63,19 @@ public class OrderformServiceImpl extends ServiceImpl<OrderformMapper, Orderform
         return orderformMapper.weekcount();
     }
 
+    public Week selectWeek(){
+        return orderformMapper.selectWeek();
+    }
+
+    public Week yesterWeek(){
+        return orderformMapper.yesterWeek();
+    }
+
+    public WeekMoney selectWeekMoney(){
+        return orderformMapper.selectWeekMoney();
+    }
+
+    public WeekMoney yesterWeekMoney(){
+        return orderformMapper.yesterWeekMoney();
+    }
 }
