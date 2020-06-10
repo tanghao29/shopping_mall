@@ -1,6 +1,7 @@
 package com.huayu.shopping_mall.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 
@@ -24,14 +25,19 @@ public class Commodity  {
 
     private Integer ceid;
 
+    @TableField(exist = false)
     private String ccname;
 
+    @TableField(exist = false)
     private Integer cenumber;
 
+    @TableField(exist = false)
     private BigDecimal cebuymoney;
 
+    @TableField(exist = false)
     private BigDecimal cesellmoney;
 
+    @TableField(exist = false)
     private String ceimg;
 
     private String cstate;

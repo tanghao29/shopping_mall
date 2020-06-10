@@ -17,4 +17,6 @@ public interface ICommodityService extends IService<Commodity> {
 
     List<Commodity> queryCOmmodityList();
 
+    List<Commodity> queryListCommodtiy();
+
 }

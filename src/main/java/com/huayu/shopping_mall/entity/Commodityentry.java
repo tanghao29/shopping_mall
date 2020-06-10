@@ -1,6 +1,7 @@
 package com.huayu.shopping_mall.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
@@ -34,6 +35,11 @@ public class Commodityentry implements Serializable {
 
     private Integer uid;
 
+    private Integer sid;
+
+    @TableField(exist = false)
+    private String sname;
+
     @JsonFormat(pattern = "yyyy-MM-dd",timezone = "Asia/Shanghai")
     private Date cedate;
 
@@ -42,8 +48,11 @@ public class Commodityentry implements Serializable {
     private BigDecimal cesellmoney;
 
 
+    @TableField(exist = false)
     private Commodity commodity;
+    @TableField(exist = false)
     private User user;
+    @TableField(exist = false)
     private String uname;
 
 
