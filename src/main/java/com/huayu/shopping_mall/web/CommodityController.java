@@ -30,4 +30,12 @@ public class CommodityController {
         return iCommodityService.queryCOmmodityList();
     }
 
+    @RequestMapping("/queryListCommodtiy")
+    public List<Commodity> queryListCommodtiy(){
+
+        return iCommodityService.queryListCommodtiy();
+    }
+
+
+
 }

@@ -4,8 +4,8 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.huayu.shopping_mall.entity.Commodityentry;
 import com.huayu.shopping_mall.utils.RespPageBean;
 
-
 import java.util.Date;
+import java.util.List;
 
 /**
  * <p>
@@ -26,4 +26,6 @@ public interface ICommodityentryService extends IService<Commodityentry> {
      * @return
      */
     RespPageBean getAllGoodInByPage(Integer page, Integer size,Commodityentry commodityentry, Date[] beginDate,String uname);
+
+    List<Commodityentry> queryCommodityentryList(Integer ceid);
 }

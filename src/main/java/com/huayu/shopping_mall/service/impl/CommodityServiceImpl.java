@@ -3,6 +3,7 @@ package com.huayu.shopping_mall.service.impl;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.huayu.shopping_mall.entity.Commodity;
 import com.huayu.shopping_mall.mapper.CommodityMapper;
+import com.huayu.shopping_mall.mapper.CommodityentryMapper;
 import com.huayu.shopping_mall.service.ICommodityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,9 +24,17 @@ public class CommodityServiceImpl extends ServiceImpl<CommodityMapper, Commodity
     @Autowired
     CommodityMapper commodityMapper;
 
+    @Autowired
+    private CommodityentryMapper commodityentryMapper;
+
     @Override
     public List<Commodity> queryCOmmodityList() {
         return commodityMapper.queryCOmmodityList();
+    }
+
+    @Override
+    public List<Commodity> queryListCommodtiy() {
+        return commodityMapper.selectList(null);
     }
 
 }

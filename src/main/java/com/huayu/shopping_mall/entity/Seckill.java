@@ -22,6 +22,9 @@ public class Seckill  {
     @TableId(value = "skid", type = IdType.AUTO)
     private Integer skid;
 
+    @TableField(exist = false)
+    private Integer sknubmer;
+
     private String sktitle;
 
     private String skstate;
