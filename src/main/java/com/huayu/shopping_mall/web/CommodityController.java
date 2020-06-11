@@ -25,15 +25,26 @@ public class CommodityController {
     ICommodityService iCommodityService;
 
 @RequestMapping("/queryList")
-    public List<Commodity> queryList(){
-    System.out.println(iCommodityService.queryCOmmodityList());
-        return iCommodityService.queryCOmmodityList();
+    public List<Commodity> queryList(Commodity commodity){
+    System.out.println(iCommodityService.queryCOmmodityList(commodity));
+        return iCommodityService.queryCOmmodityList(commodity);
     }
 
     @RequestMapping("/queryListCommodtiy")
     public List<Commodity> queryListCommodtiy(){
 
         return iCommodityService.queryListCommodtiy();
+    }
+
+    @RequestMapping("/updatestate")
+    public Integer updatestate(Commodity commodity){
+        iCommodityService.updateById(commodity);
+    return 200;
+    }
+
+    @RequestMapping("/queryById")
+    public Commodity queryById(Integer cid){
+    return iCommodityService.getById(cid);
     }
 
 

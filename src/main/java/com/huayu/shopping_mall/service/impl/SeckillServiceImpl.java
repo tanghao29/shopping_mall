@@ -10,6 +10,7 @@ import com.huayu.shopping_mall.service.ISeckillService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -37,6 +38,15 @@ public class SeckillServiceImpl extends ServiceImpl<SeckillMapper, Seckill> impl
             QueryWrapper<Activities> activitiesQueryWrapper=new QueryWrapper<>();
             activitiesQueryWrapper.eq("skid",seckill1.getSkid());
             seckill1.setSknubmer(activitiesMapper.selectList(activitiesQueryWrapper).size());
+             Date date=new Date();
+
+             if(date.compareTo(seckill1.getSkstarttime()) > 0 && date.compareTo(seckill1.getSkendtime()) < 0 ){
+                seckill1.setState("活动进行中");
+             }else {
+                 seckill1.setState("活动已结束");
+                 seckill1.setSkstate("2");
+                 seckillMapper.updateById(seckill1);
+             }
         }
 
         return likeSeckill;

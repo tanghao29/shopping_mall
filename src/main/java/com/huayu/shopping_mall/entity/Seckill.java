@@ -3,7 +3,10 @@ package com.huayu.shopping_mall.entity;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
+
+import java.util.Date;
 
 /**
  * <p>
@@ -25,18 +28,25 @@ public class Seckill  {
     @TableField(exist = false)
     private Integer sknubmer;
 
+    @TableField(exist = false)
+    private String state;
+
     private String sktitle;
 
     private String skstate;
 
-    private String skstarttime;
+//    @DateTimeFormat(pattern="yyyy-MM-dd")
+    @JsonFormat(pattern="yyyy-MM-dd",timezone = "Asia/Shanghai")
+    private Date skstarttime;
 
-    private String skendtime;
+//    @DateTimeFormat(pattern="yyyy-MM-dd")
+    @JsonFormat(pattern="yyyy-MM-dd",timezone = "Asia/Shanghai")
+    private Date skendtime;
 
     @TableField(exist = false)
-    private String skstarttimeover;
+    private Date skstarttimeover;
     @TableField(exist = false)
-    private String skendtimeover;
+    private Date skendtimeover;
 
 
 
