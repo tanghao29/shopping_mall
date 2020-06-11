@@ -27,9 +27,9 @@ public class CommodityServiceImpl extends ServiceImpl<CommodityMapper, Commodity
     @Autowired
     private CommodityentryMapper commodityentryMapper;
 
-    @Override
-    public List<Commodity> queryCOmmodityList() {
-        return commodityMapper.queryCOmmodityList();
+  @Override
+    public List<Commodity> queryCOmmodityList(Commodity commodity) {
+        return commodityMapper.queryCOmmodityList(commodity);
     }
 
     @Override

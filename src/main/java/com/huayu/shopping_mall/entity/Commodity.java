@@ -23,6 +23,7 @@ public class Commodity  {
 
     private String cname;
 
+    @TableField(exist = false)
     private Integer ceid;
 
     @TableField(exist = false)

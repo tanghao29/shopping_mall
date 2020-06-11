@@ -2,9 +2,12 @@ package com.huayu.shopping_mall.mapper.Provider;
 
 import com.huayu.shopping_mall.entity.Seckill;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
 public class SeckillProvider {
 
-    public String queryLikeSeckills(Seckill seckill) {
+    public String queryLikeSeckills(Seckill seckill) throws ParseException {
 
         StringBuffer stringBuffer=new StringBuffer("select * from seckill where 1=1 ");
 
@@ -14,13 +17,25 @@ public class SeckillProvider {
         }
 
 //        开始时间区间
-        if (seckill.getSkstarttime()!=null && seckill.getSkstarttime()!="" && seckill.getSkstarttimeover()!=null && seckill.getSkstarttimeover()!=""){
-            stringBuffer.append(" and skstarttime between "+"'"+seckill.getSkstarttime()+"' and '"+seckill.getSkstarttimeover()+"'");
+        if(seckill.getSkstarttime()!=null && seckill.getSkstarttimeover()==null){
+            SimpleDateFormat sdf2=new SimpleDateFormat("yyyy-MM-dd");
+            stringBuffer.append(" and skstarttime >= '"+sdf2.format(seckill.getSkstarttime()).toString()+"'");
+
+        }
+        if (seckill.getSkstarttime()!=null &&  seckill.getSkstarttimeover()!=null){
+            SimpleDateFormat sdf2=new SimpleDateFormat("yyyy-MM-dd");
+            stringBuffer.append(" and skstarttime between "+"'"+sdf2.format(seckill.getSkstarttime())+"' and '"+sdf2.format(seckill.getSkstarttimeover())+"'");
         }
 
 //        结束时间区间
-        if (seckill.getSkendtime()!=null && seckill.getSkendtime()!="" && seckill.getSkendtimeover()!=null && seckill.getSkendtimeover()!=""){
-            stringBuffer.append(" and skendtime between "+"'"+seckill.getSkendtime()+"' and '"+seckill.getSkendtimeover()+"'");
+        if(seckill.getSkendtime()!=null && seckill.getSkendtimeover()==null){
+            SimpleDateFormat sdf2=new SimpleDateFormat("yyyy-MM-dd");
+            stringBuffer.append(" and skendtime <= '"+sdf2.format(seckill.getSkendtime()).toString()+"'");
+
+        }
+        if (seckill.getSkendtime()!=null  && seckill.getSkendtimeover()!=null ){
+            SimpleDateFormat sdf2=new SimpleDateFormat("yyyy-MM-dd");
+            stringBuffer.append(" and skendtime between "+"'"+sdf2.format(seckill.getSkendtime())+"' and '"+sdf2.format(seckill.getSkendtimeover())+"'");
         }
 
 //        是否上架
