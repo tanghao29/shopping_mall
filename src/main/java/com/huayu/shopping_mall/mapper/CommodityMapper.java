@@ -19,4 +19,32 @@ import java.util.List;
 public interface CommodityMapper extends BaseMapper<Commodity> {
     @Select("SELECT * FROM commodity c LEFT JOIN commodityentry ce ON c.cid=ce.cid  LEFT JOIN commodityclassification cc  ON c.ccid=cc.ccid ")
     List<Commodity> queryCOmmodityList();
+
+    /*
+    * mengqi
+    * 已下架
+    * */
+    @Select(" select count(1) from commodity where cstate=0 ")
+    Integer sold();
+
+    /*
+     * mengqi
+     * 已下架
+     * */
+    @Select(" select count(1) from commodity where cstate=0 ")
+    Integer putaway();
+
+    /*
+    * mengqi
+    * 库春紧张
+    * */
+    @Select(" select count(1) from (select  cid from commodityentry  group by cid having sum(cenumber) <50 ) a ")
+    Integer  inventory();
+
+    /*
+    * mengqi
+    * 全部商品
+    * */
+    @Select(" select count(1) from commodityentry ")
+    Integer countCommodityentry();
 }

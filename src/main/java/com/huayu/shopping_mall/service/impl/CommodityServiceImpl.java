@@ -37,4 +37,22 @@ public class CommodityServiceImpl extends ServiceImpl<CommodityMapper, Commodity
         return commodityMapper.selectList(null);
     }
 
+    public Integer sold(){
+        return commodityMapper.sold();
+    }
+
+    public Integer putaway(){
+        return commodityMapper.putaway();
+    }
+
+    public Integer inventory(){
+        return commodityMapper.inventory();
+    }
+
+    public Integer countCommodityentry(){
+        return commodityMapper.countCommodityentry();
+    }
+
+
+
 }
