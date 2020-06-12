@@ -21,20 +21,76 @@ public class BrowseServiceImpl extends ServiceImpl<BrowseMapper, Browse> impleme
     @Autowired
     BrowseMapper browseMapper;
 
-    public Integer searchbrowse(String nb){
-        return browseMapper.searchbrowse(nb);
+    public Integer searchbrowse(String nb,String time){
+        return browseMapper.searchbrowse(nb,time);
     }
 
-    public Integer ordersCount(String nb){
-        return browseMapper.ordersCount(nb);
+    public Integer ordersCount(String nb,String time){
+        return browseMapper.ordersCount(nb,time);
     }
 
-    public Integer ordersCounts(String nb){
-        return browseMapper.ordersCounts(nb);
+    public Integer ordersCounts(String nb,String time){
+        return browseMapper.ordersCounts(nb,time);
     }
 
-    public Integer sumofnumber(String nb){
-        return browseMapper.sumofnumber(nb);
+    public Integer sumofnumber(String nb,String time){
+        return browseMapper.sumofnumber(nb,time);
     }
+    public Integer yxordersCounts(String nb,String time){
+        return browseMapper.yxordersCounts(nb,time);
+    }
+
+    public Integer ordersMontey(String nb,String time){
+        return browseMapper.ordersMontey(nb,time);
+    }
+
+
+    public Integer refundMoney(String nb,String time){
+        Integer i=0;
+        i=browseMapper.refundMoney(nb,time);
+        if(null==i){
+           i=0;
+        }
+        return i;
+    }
+
+
+    public Integer paymentCount(String nb,String time){
+        Integer i=0;
+        i=browseMapper.paymentCount(nb,time);
+        if(null==i){
+           i=0;
+        }
+        return i;
+    }
+
+    public Integer paymentOrderCount(String nb,String time){
+        Integer i=0;
+        i=browseMapper.paymentOrderCount(nb,time);
+        if(null==i){
+           i=0;
+        }
+        return i;
+    }
+
+
+    public Integer paymentOfnumber(String nb,String time){
+        Integer i=0;
+        i=browseMapper.paymentOfnumber(nb,time);
+        if(null==i){
+           i=0;
+        }
+        return i;
+    }
+    public Integer paymentOfmoney(String nb,String time){
+        Integer i=0;
+        i=browseMapper.paymentOfmoney(nb,time);
+        if(null==i){
+           i=0;
+        }
+        return i;
+    }
+
+
 
 }
