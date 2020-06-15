@@ -24,8 +24,8 @@ public class SpecificationServiceImpl extends ServiceImpl<SpecificationMapper, S
     SpecificationMapper specificationMapper;
 
     @Override
-    public List<Specification> listSpcification() {
-        return specificationMapper.listSpcification();
+    public List<Specification> listSpcification(Integer ccid) {
+        return specificationMapper.listSpcification(ccid);
     }
 
 
