@@ -2,20 +2,15 @@ package com.huayu.shopping_mall.web;
 
 
 import com.huayu.shopping_mall.entity.Commodityentry;
-import com.huayu.shopping_mall.service.ICommodityentryService;
 import com.huayu.shopping_mall.service.impl.CommodityentryServiceImpl;
 import com.huayu.shopping_mall.utils.RespBean;
 import com.huayu.shopping_mall.utils.RespPageBean;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
-import java.util.List;
 
 /**
  * <p>
@@ -31,9 +26,6 @@ public class CommodityentryController {
 
     @Autowired
     CommodityentryServiceImpl goodsInService;
-
-    @Autowired
-    ICommodityentryService iCommodityentryService;
 
     /**
      * 分页查询入库列表
@@ -56,18 +48,6 @@ public class CommodityentryController {
         }
         return RespBean.error("添加失败");
     }
-    @GetMapping("/queryCommodityentryList")
-    public List<Commodityentry> queryCommodityentryList(Integer cid){
-
-        return iCommodityentryService.queryCommodityentryList(cid);
-    }
-
-    @RequestMapping("/queryById")
-    public Commodityentry queryById(Integer ceid){
-
-        return iCommodityentryService.getById(ceid);
-    }
-
 
 
 }

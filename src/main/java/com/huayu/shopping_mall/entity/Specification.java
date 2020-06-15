@@ -1,7 +1,6 @@
 package com.huayu.shopping_mall.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 
@@ -24,7 +23,6 @@ public class Specification  {
 
     private Integer ccid;
 
-    @TableField(exist = false)
     private String ccname;
 
     private String sname;
