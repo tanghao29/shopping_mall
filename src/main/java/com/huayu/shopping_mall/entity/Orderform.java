@@ -42,6 +42,6 @@ public class Orderform implements Serializable {
 
     private String ofshsite;
 
-
+    private Integer xuid;
 
 }
