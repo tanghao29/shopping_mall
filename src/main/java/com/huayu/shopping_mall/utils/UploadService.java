@@ -16,6 +16,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 /**
+ * 上传工具类
  * @author licheng
  * @date 2020/6/11 21:40
  */
