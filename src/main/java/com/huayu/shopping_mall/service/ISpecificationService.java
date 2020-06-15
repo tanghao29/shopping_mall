@@ -15,6 +15,6 @@ import java.util.List;
  */
 public interface ISpecificationService extends IService<Specification> {
 
-    List<Specification> listSpcification();
+    List<Specification> listSpcification(Integer ccid);
 
 }
