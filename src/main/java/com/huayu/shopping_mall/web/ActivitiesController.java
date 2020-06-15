@@ -45,4 +45,26 @@ public class ActivitiesController {
         return 200;
     }
 
+    @RequestMapping("/add")
+    public Integer add(Activities activities){
+System.out.println(activities.getAsksdatetime());
+        iActivitiesService.save(activities);
+        return 200;
+    }
+
+    @RequestMapping("/updateactivities")
+    public Integer updateactivities(Activities activities){
+        System.out.println(activities.toString()+"ashdfjhsadkjhfjkhasdkjfhkjas");
+
+        iActivitiesService.updateById(activities);
+        return 200;
+    }
+
+    @RequestMapping("/querybyid")
+    public Activities querybyid(Integer asid){
+        System.out.println(asid+"hdasjhfkjsdhakjfhkjasdhkjfhkjasdhfkjhkj");
+        return iActivitiesService.getById(asid);
+    }
+
+
 }
