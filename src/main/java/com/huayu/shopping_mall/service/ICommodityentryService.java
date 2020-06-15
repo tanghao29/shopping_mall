@@ -27,5 +27,6 @@ public interface ICommodityentryService extends IService<Commodityentry> {
      */
     RespPageBean getAllGoodInByPage(Integer page, Integer size,Commodityentry commodityentry, Date[] beginDate,String uname);
 
+
     List<Commodityentry> queryCommodityentryList(Integer ceid);
 }
