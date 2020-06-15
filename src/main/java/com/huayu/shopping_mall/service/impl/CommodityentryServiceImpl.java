@@ -76,6 +76,11 @@ public class CommodityentryServiceImpl extends ServiceImpl<CommodityentryMapper,
     }
 
 
+    /**
+     * 新增入库
+     * @param commodityentry
+     * @return
+     */
     @Override
     public Integer addGoods(Commodityentry commodityentry) {
         Date nowTime = new Date();

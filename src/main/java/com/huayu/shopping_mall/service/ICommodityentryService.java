@@ -30,6 +30,11 @@ public interface ICommodityentryService extends IService<Commodityentry> {
 
     List<Commodityentry> queryCommodityentryList(Integer ceid);
 
+    /**
+     * 新增入库
+     * @param commodityentry
+     * @return
+     */
     Integer addGoods(Commodityentry commodityentry);
 
 }
