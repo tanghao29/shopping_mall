@@ -5,11 +5,11 @@
     <resultMap id="BaseResultMap" type="com.huayu.shopping_mall.entity.Commodityentry">
         <result column="ceid" property="ceid" jdbcType="INTEGER"/>
         <result column="cid" property="cid" jdbcType="INTEGER"/>
-        <result column="cenumber" property="cenumber" jdbcType="VARCHAR"/>
+        <result column="cenumber" property="cenumber" jdbcType="INTEGER"/>
         <result column="ceimg" property="ceimg" jdbcType="VARCHAR"/>
         <result column="uid" property="uid" jdbcType="INTEGER"/>
-        <result column="cedate" property="cedate" jdbcType="VARCHAR"/>
-        <result column="cebuymoney" property="cebuymoney" jdbcType="VARCHAR"/>
+        <result column="cedate" property="cedate" jdbcType="DATE"/>
+        <result column="cebuymoney" property="cebuymoney" jdbcType="DECIMAL"/>
         <result column="cesellmoney" property="cesellmoney" jdbcType="DECIMAL"/>
     </resultMap>
 
@@ -35,9 +35,6 @@
         <if test="uname !=null and uname != ''">
             and u.uname like concat('%',#{uname},'%')
         </if>
-        <if test="commodityentry.cname !=null and commodityentry.cname != ''">
-            and co.cname like concat('%',#{commodityentry.cname},'%')
-        </if>
         <if test="commodityentry.cebuymoney !=null and commodityentry.cebuymoney != ''">
             and goodsIn.cebuymoney like concat('%',#{commodityentry.cebuymoney},'%')
         </if>
@@ -53,83 +50,23 @@
     </select>
 
     <select id="getTotal" resultType="java.lang.Long">
-        select count(*) from commodityentry goodsIn,user u,commodity co
+        select count(*) from commodityentry goodsIn,user u
         <where>
-            <if test="commodityentry !=null">
-                <if test="commodityentry.cid !=null">
-                    and goodsIn.cid like concat('%',#{commodityentry.cid},'%')
-                </if>
-                <if test="commodityentry.cname !=null and commodityentry.cname != ''">
-                    and co.cname like concat('%',#{commodityentry.cname},'%')
-                </if>
-                <if test="commodityentry.cebuymoney !=null and commodityentry.cebuymoney != ''">
-                    and goodsIn.cebuymoney like concat('%',#{commodityentry.cebuymoney},'%')
-                </if>
-                <if test="commodityentry.cesellmoney !=null and commodityentry.cesellmoney != ''">
-                    and goodsIn.cesellmoney like concat('%',#{commodityentry.cesellmoney},'%')
-                </if>
+            <if test="commodityentry.cid !=null">
+                and goodsIn.cid like concat('%',#{commodityentry.cid},'%')
             </if>
             <if test="uname !=null and uname != ''">
                 and u.uname like concat('%',#{uname},'%')
+            </if>
+            <if test="commodityentry.cebuymoney !=null and commodityentry.cebuymoney != ''">
+                and goodsIn.cebuymoney like concat('%',#{commodityentry.cebuymoney},'%')
+            </if>
+            <if test="commodityentry.cesellmoney !=null and commodityentry.cesellmoney != ''">
+                and goodsIn.cesellmoney like concat('%',#{commodityentry.cesellmoney},'%')
             </if>
             <if test="beginDate != null">
                 and goodsIn.cedate between #{beginDate[0]} and #{beginDate[1]}
             </if>
         </where>
     </select>
-    <insert id="insertSelective" parameterType="com.huayu.shopping_mall.entity.Commodityentry">
-        insert into commodityentry
-        <trim prefix="(" suffix=")" suffixOverrides=",">
-            <if test="ceid != null">
-                ceid,
-            </if>
-            <if test="cid != null">
-                cid,
-            </if>
-            <if test="uid != null">
-                uid,
-            </if>
-            <if test="ceimg != null">
-                ceimg,
-            </if>
-            <if test="cenumber != null">
-                cenumber,
-            </if>
-            <if test="cebuymoney != null">
-                cebuymoney,
-            </if>
-            <if test=" ccid != null">
-                ccid,
-            </if>
-            <if test="sid != null">
-                sid,
-            </if>
-        </trim>
-        <trim prefix="values (" suffix=")" suffixOverrides=",">
-            <if test="ceid != null">
-                #{ceid,jdbcType=INTEGER},
-            </if>
-            <if test="cid != null">
-                #{cid,jdbcType=INTEGER},
-            </if>
-            <if test="uid != null">
-                #{uid,jdbcType=INTEGER},
-            </if>
-            <if test="ceimg != null">
-                #{ceimg,jdbcType=VARCHAR},
-            </if>
-            <if test="cenumber != null">
-                #{cenumber,jdbcType=VARCHAR},
-            </if>
-            <if test="cebuymoney != null">
-                #{cebuymoney,jdbcType=VARCHAR},
-            </if>
-            <if test="ccid != null">
-                #{ccid,jdbcType=INTEGER},
-            </if>
-            <if test="sid != null">
-                #{sid,jdbcType=INTEGER},
-            </if>
-        </trim>
-    </insert>
 </mapper>
