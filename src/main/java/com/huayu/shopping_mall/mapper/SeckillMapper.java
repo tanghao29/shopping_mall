@@ -19,8 +19,7 @@ import java.util.List;
 @Mapper
 public interface SeckillMapper extends BaseMapper<Seckill> {
 
-//    条件+全部查询
-    @SelectProvider(type = SeckillProvider.class , method = "queryLikeSeckills")
+    @SelectProvider(type =SeckillProvider.class,method ="queryLikeSeckill" )
     List<Seckill> queryLikeSeckill(Seckill seckill);
 
 }

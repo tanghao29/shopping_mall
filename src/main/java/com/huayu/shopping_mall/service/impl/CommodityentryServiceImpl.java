@@ -33,15 +33,7 @@ public class CommodityentryServiceImpl extends ServiceImpl<CommodityentryMapper,
     @Autowired
     SpecificationMapper specificationMapper;
 
-    /**
-     * 分页查询订单列表
-     * @param page
-     * @param size
-     * @param commodityentry
-     * @param beginDate
-     * @param uname
-     * @return
-     */
+
     @Override
     public RespPageBean getAllGoodInByPage(Integer page, Integer size, Commodityentry commodityentry, Date[] beginDate, String uname) {
         if (page != null && size != null) {
@@ -76,11 +68,6 @@ public class CommodityentryServiceImpl extends ServiceImpl<CommodityentryMapper,
     }
 
 
-    /**
-     * 新增入库
-     * @param commodityentry
-     * @return
-     */
     @Override
     public Integer addGoods(Commodityentry commodityentry) {
         Date nowTime = new Date();

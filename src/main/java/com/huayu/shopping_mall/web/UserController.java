@@ -132,11 +132,4 @@ public class UserController {
         return userService.searchUser(user);
     }
 
-    @RequestMapping("/insertuser")
-    public Integer insertuser(User user){
-
-        userService.save(user);
-        return 200;
-    }
-
 }
