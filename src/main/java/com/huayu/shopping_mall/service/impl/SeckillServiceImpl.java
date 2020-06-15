@@ -40,7 +40,9 @@ public class SeckillServiceImpl extends ServiceImpl<SeckillMapper, Seckill> impl
             seckill1.setSknubmer(activitiesMapper.selectList(activitiesQueryWrapper).size());
              Date date=new Date();
 
-             if(date.compareTo(seckill1.getSkstarttime()) > 0 && date.compareTo(seckill1.getSkendtime()) < 0 ){
+             System.out.println(date.compareTo(seckill1.getSkendtime())+1+"*************************************");
+             System.out.println(seckill1.getSkendtime()+"*************************************");
+             if(date.compareTo(seckill1.getSkstarttime())+1 >= 0 && date.compareTo(seckill1.getSkendtime())-1 <= 0 ){
                 seckill1.setState("活动进行中");
              }else {
                  seckill1.setState("活动已结束");

@@ -134,8 +134,16 @@ public class UserController {
 
     @RequestMapping("/insertuser")
     public Integer insertuser(User user){
-
+//        user.getUpass()
+user.setUstate("1");
         userService.save(user);
+        return 200;
+    }
+
+    @RequestMapping("/login")
+    public Integer login(User user){
+
+
         return 200;
     }
 
