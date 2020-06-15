@@ -32,6 +32,4 @@ public interface CommodityentryMapper extends BaseMapper<Commodityentry> {
     List<Commodityentry> getAllGoodInByPage(@Param("page") Integer page, @Param("size") Integer size, @Param("commodityentry") Commodityentry commodityentry, @Param("beginDate") Date[] beginDate,@Param("uname") String uname);
 
     Long getTotal(@Param("commodityentry") Commodityentry commodityentry, @Param("beginDate") Date[] beginDate,@Param("uname") String uname);
-
-    int insertSelective(Commodityentry commodityentry);
 }
