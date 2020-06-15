@@ -26,4 +26,7 @@ public interface ICommodityentryService extends IService<Commodityentry> {
      * @return
      */
     RespPageBean getAllGoodInByPage(Integer page, Integer size,Commodityentry commodityentry, Date[] beginDate,String uname);
+
+    Integer addGoods(Commodityentry commodityentry);
+
 }

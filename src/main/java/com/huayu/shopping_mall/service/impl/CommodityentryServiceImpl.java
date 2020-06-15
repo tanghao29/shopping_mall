@@ -6,9 +6,11 @@ import com.huayu.shopping_mall.mapper.CommodityentryMapper;
 import com.huayu.shopping_mall.service.ICommodityentryService;
 import com.huayu.shopping_mall.utils.RespPageBean;
 
+import javafx.scene.input.DataFormat;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -28,17 +30,27 @@ public class CommodityentryServiceImpl extends ServiceImpl<CommodityentryMapper,
 
 
     @Override
-    public RespPageBean getAllGoodInByPage(Integer page, Integer size, Commodityentry commodityentry, Date[] beginDate,String uname) {
-//        if (page != null && size != null) {
-//            page = (page - 1) * size;
-//        }
-        List<Commodityentry> data = goodsInMapper.getAllGoodInByPage(page, size, commodityentry, beginDate,uname);
-        Long total = goodsInMapper.getTotal(commodityentry, beginDate,uname);
+    public RespPageBean getAllGoodInByPage(Integer page, Integer size, Commodityentry commodityentry, Date[] beginDate, String uname) {
+        if (page != null && size != null) {
+            page = (page - 1) * size;
+        }
+        List<Commodityentry> data = goodsInMapper.getAllGoodInByPage(page, size, commodityentry, beginDate, uname);
+//        Long total = goodsInMapper.getTotal(commodityentry, beginDate,uname);
         RespPageBean respPageBean = new RespPageBean();
         respPageBean.setData(data);
+        long total = data.size();
         respPageBean.setTotal(total);
         return respPageBean;
     }
 
 
+    @Override
+    public Integer addGoods(Commodityentry commodityentry) {
+        Date nowTime = new Date();
+        SimpleDateFormat time = new SimpleDateFormat("yyy-MM-dd");
+        String format = time.format(nowTime);
+        commodityentry.setCedate(format);
+//        return goodsInMapper.insertSelective(commodityentry);
+        return goodsInMapper.insert(commodityentry);
+    }
 }
