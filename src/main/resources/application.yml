@@ -1,6 +1,3 @@
-
-
-
 #fastdfs设置
 fdfs:
   so-timeout: 2500       # 读取时间
