@@ -15,8 +15,6 @@ import java.util.List;
  */
 public interface ICommodityService extends IService<Commodity> {
 
-    List<Commodity> queryCOmmodityList(Commodity commodity);
-
-    List<Commodity> queryListCommodtiy();
+    List<Commodity> queryCOmmodityList();
 
 }

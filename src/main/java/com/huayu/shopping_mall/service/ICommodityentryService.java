@@ -29,4 +29,7 @@ public interface ICommodityentryService extends IService<Commodityentry> {
 
 
     List<Commodityentry> queryCommodityentryList(Integer ceid);
+
+    Integer addGoods(Commodityentry commodityentry);
+
 }

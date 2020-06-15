@@ -24,41 +24,14 @@ public class SpecificationController {
     private ISpecificationService iSpecificationService;
 
     @RequestMapping("/querySpecifcationList")
-    public List<Specification> querySpecifcationList(Integer ccid){
-        return iSpecificationService.listSpcification(ccid);
+    public List<Specification> querySpecifcationList(){
+        return iSpecificationService.listSpcification();
     }
 
     @RequestMapping(value = "/deleteById")
     public Integer deleteById(Integer sid){
-        iSpecificationService.removeById(sid);
+            iSpecificationService.removeById(sid);
         return  200;
-    }
-
-    @RequestMapping("/queryById")
-    public Specification queryById(Integer sid){
-        return iSpecificationService.getById(sid);
-    }
-
-    @RequestMapping("/update")
-    public Integer update(Specification specification){
-        iSpecificationService.updateById(specification);
-        return 200;
-    }
-
-    @RequestMapping("/addspec")
-    public Integer addspec(Specification specification){
-        iSpecificationService.save(specification);
-        return 200;
-    }
-
-    @RequestMapping("/deleteByccid")
-    public Integer deleteByccid(Integer sid){
-        Specification specification=new Specification();
-        specification.setSid(sid);
-        specification.setCcid(0);
-        iSpecificationService.updateById(specification);
-
-        return 200;
     }
 
 }
