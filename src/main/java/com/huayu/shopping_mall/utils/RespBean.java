@@ -31,10 +31,6 @@ public class RespBean {
         return new RespBean(500, msg, obj);
     }
 
-    public RespBean(String msg, Object obj) {
-        this.msg = msg;
-        this.obj = obj;
-    }
 
     private RespBean() {
     }
