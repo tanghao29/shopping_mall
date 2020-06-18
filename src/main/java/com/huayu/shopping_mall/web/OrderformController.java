@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * <p>
@@ -21,6 +22,7 @@ import java.util.Date;
  * @since 2020-06-04
  */
 @RestController
+@CrossOrigin
 @RequestMapping("/shopping_mall/orderform")
 public class OrderformController {
 
@@ -40,9 +42,16 @@ public class OrderformController {
         return orderformService.getOrderByPage(page,size,orderform,beginDate);
     }
 
-    @PutMapping("/")
-    public RespBean updateOrder(@RequestBody Orderform orderform){
-        if(orderformService.updateOrder(orderform) == 1){
+    @RequestMapping("/querylsit")
+    public List<Orderform> querylsit(){
+        return orderformService.list();
+    }
+
+    @CrossOrigin
+    @RequestMapping("/updateOrder")
+    public RespBean updateOrder(Orderform orderform){
+        System.out.println("进来了！！！！！！！！！！！！");
+        if(orderformService.updateById(orderform) == true){
             return RespBean.ok("地址修改成功");
         }
         return RespBean.error("地址修改失败");

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.huayu.shopping_mall.mapper.StockremovalMapper">
+
+<!--    <resultMap id="baseMap" type="com.huayu.shopping_mall.entity.Stockremoval">-->
+<!--        <id property="srid" column="srid" jdbcType="INTEGER"/>-->
+<!--        <result property="cid" column="cid" jdbcType="INTEGER"/>-->
+<!--        <result property="srdate" column="srdate" jdbcType="DATE"/>-->
+<!--        <result property="ofid" column="ofid" jdbcType="INTEGER"/>-->
+<!--        <result property="state" column="state" jdbcType="VARCHAR"/>-->
+<!--        <result property="time" column="time" jdbcType="DATE"/>-->
+<!--    </resultMap>-->
+
+<!--    <resultMap id="ReturnGoods" extends="baseMap" type="com.huayu.shopping_mall.entity.Stockremoval">-->
+<!--        <association property="orderform" javaType="com.huayu.shopping_mall.entity.Orderform">-->
+<!--            <id column="ofid" property="ofid"/>-->
+<!--            <result column="ofmoney" property="ofmoney"/>-->
+<!--            <result column="ofshname" property="ofshname"/>-->
+<!--        </association>-->
+<!--        <association property="user" javaType="com.huayu.shopping_mall.entity.User">-->
+<!--            <id column="uid" property="uid"/>-->
+<!--            <result column="uaccount" property="uaccount"/>-->
+<!--        </association>-->
+
+<!--    </resultMap>-->
+
+
+<!--    <select id="getAllReturnGoods" resultMap="ReturnGoods">-->
+<!--        select st.*, ord.ofid as ofid ,ord.ofmoney as ofmoney ,ord.ofshname as ofshname,u.uid as uid, u.uaccount as uaccount-->
+<!--        from stockremoval st  ,orderform ord,user u-->
+<!--        where st.ofid=ord.ofid-->
+<!--        <if test="stockremovalVo.page != null and stockremovalVo.size != null">-->
+<!--            limit #{stockremovalVo.page},#{stockremovalVo.size}-->
+<!--        </if>-->
+<!--    </select>-->
+</mapper>

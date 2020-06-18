@@ -1,7 +1,11 @@
 package com.huayu.shopping_mall.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.huayu.shopping_mall.entity.Jurisdiction;
+import com.huayu.shopping_mall.entity.Role;
 import com.huayu.shopping_mall.entity.User;
+import com.huayu.shopping_mall.mapper.JurisdictionMapper;
+import com.huayu.shopping_mall.mapper.RoleMapper;
 import com.huayu.shopping_mall.mapper.UserMapper;
 import com.huayu.shopping_mall.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +26,30 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
 
     @Autowired
     UserMapper userMapper;
+    @Autowired
+    RoleMapper roleMapper;
+    @Autowired
+    JurisdictionMapper jurisdictionMapper;
 
-    public void updateUserStatu(int uid,String ustate){
+
+    @Override
+    public User findAllUserInfoByUsername(String uname) {
+        User user = userMapper.getName(uname);
+
+        // 用户的角色集合
+        List<Role> roleList = roleMapper.findRoleListByUserId(user.getUid());
+        // 用户的权限集合
+        List<Jurisdiction> permissionList = jurisdictionMapper.findPermissionByUserId(user.getUid());
+
+        user.setRoleList(roleList);
+        user.setPermissionList(permissionList);
+
+        return user;
+    }
+
+
+
+    public void updateUserStatu(int uid, String ustate){
         userMapper.updateuserstatu(uid,ustate);
     }
 

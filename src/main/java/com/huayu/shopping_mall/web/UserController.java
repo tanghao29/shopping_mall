@@ -6,18 +6,24 @@ import com.huayu.shopping_mall.entity.Userrole;
 import com.huayu.shopping_mall.service.impl.RoleServiceImpl;
 import com.huayu.shopping_mall.service.impl.UserServiceImpl;
 import com.huayu.shopping_mall.service.impl.UserroleServiceImpl;
+import com.huayu.shopping_mall.utils.RespBean;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.AuthenticationToken;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
+import java.io.Serializable;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
- *  前端控制器
+ * 前端控制器
  * </p>
  *
  * @author mq
@@ -35,16 +41,21 @@ public class UserController {
 
     @Autowired
     RoleServiceImpl roleService;
+
+
+
+
+
     /*@author mengqi
-    * 查询出所有的用户
-    * */
+     * 查询出所有的用户
+     * */
 
     @GetMapping("/userqueryall")
     @ResponseBody
-    public List<User> queryall(){
+    public List<User> queryall() {
         System.out.println("进来了啊铁子");
         return userService.list(null);
-     }
+    }
 
 
     /*@author mengqi
@@ -53,38 +64,39 @@ public class UserController {
     @CrossOrigin
     @GetMapping("/updatebyustatu")
     @ResponseBody
-    public int updatebystatu(int uid,int ustate){
-        int i=0;
-        System.out.println(uid+":"+ustate);
-        userService.updateUserStatu(uid,String.valueOf(ustate));
+    public int updatebystatu(int uid, int ustate) {
+        int i = 0;
+        System.out.println(uid + ":" + ustate);
+        userService.updateUserStatu(uid, String.valueOf(ustate));
         return i;
     }
+
     /*@author mengqi
      * 修改user
      * */
     @GetMapping("/updateUser")
     @ResponseBody
     @CrossOrigin
-    public int updateUser(User user,String citys){
-        String str=citys.substring(1,citys.length()-1);
-        if(str.indexOf("all")==-1){
+    public int updateUser(User user, String citys) {
+        String str = citys.substring(1, citys.length() - 1);
+        if (str.indexOf("all") == -1) {
             userroleService.removeByUid(user.getUid());
-            System.out.println("===========>"+str);
-            if(!"".equals(str)){
-                String [] st=str.split(",");
-                Userrole userrole=new Userrole();
+            System.out.println("===========>" + str);
+            if (!"".equals(str)) {
+                String[] st = str.split(",");
+                Userrole userrole = new Userrole();
                 for (String s : st) {
-                    System.out.println("==》"+s);
+                    System.out.println("==》" + s);
                     userrole.setUid(user.getUid());
                     userrole.setRid(Integer.parseInt(s));
                     userroleService.save(userrole);
                 }
             }
 
-        }else{
+        } else {
             userroleService.removeByUid(user.getUid());
-            List<Role> list=roleService.list(null);
-            Userrole userrole=new Userrole();
+            List<Role> list = roleService.list(null);
+            Userrole userrole = new Userrole();
             for (Role role : list) {
                 userrole.setUid(user.getUid());
                 userrole.setRid(role.getRid());
@@ -93,7 +105,7 @@ public class UserController {
 
         }
 
-        int i=0;
+        int i = 0;
         try {
             userService.updateById(user);
         } catch (Exception e) {
@@ -109,27 +121,37 @@ public class UserController {
     @GetMapping("/queryUserRole")
     @CrossOrigin
     @ResponseBody
-    public Integer[] queryUserRole(Integer uid){
-        List<Userrole> list=userroleService.queryUserRole(uid);
-        Integer[] in=new Integer[list.size()];
-        if(list.size()>0){
+    public Integer[] queryUserRole(Integer uid) {
+        List<Userrole> list = userroleService.queryUserRole(uid);
+        Integer[] in = new Integer[list.size()];
+        if (list.size() > 0) {
             for (int i = 0; i < list.size(); i++) {
-                in[i]=list.get(i).getRid();
+                in[i] = list.get(i).getRid();
             }
         }
-       return in;
+        return in;
     }
 
 
     /*
-    * mengqi
-    * user搜索
-    * */
+     * mengqi
+     * user搜索
+     * */
     @GetMapping("/searchUser")
     @ResponseBody
     @CrossOrigin
-    public List<User> searchUser(User user){
+    public List<User> searchUser(User user) {
         return userService.searchUser(user);
     }
+
+    @RequestMapping("/insertuser")
+    public Integer insertuser(User user) {
+//        user.getUpass()
+        user.setUstate("1");
+        userService.save(user);
+        return 200;
+    }
+
+
 
 }
