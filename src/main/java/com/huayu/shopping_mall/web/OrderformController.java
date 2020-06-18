@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * <p>
@@ -21,6 +22,7 @@ import java.util.Date;
  * @since 2020-06-04
  */
 @RestController
+@CrossOrigin
 @RequestMapping("/shopping_mall/orderform")
 public class OrderformController {
 
@@ -29,7 +31,6 @@ public class OrderformController {
 
     /**
      * 分页查询订单列表
-     *
      * @param page
      * @param size
      * @param orderform
@@ -37,61 +38,42 @@ public class OrderformController {
      * @return
      */
     @GetMapping("/")
-    public RespPageBean queryAllOrders(@RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "10") Integer size, Orderform orderform, Date[] beginDate) {
-        return orderformService.getOrderByPage(page, size, orderform, beginDate);
+    public RespPageBean queryAllOrders(@RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "10") Integer size,Orderform orderform,Date[] beginDate) {
+        return orderformService.getOrderByPage(page,size,orderform,beginDate);
     }
 
+    @RequestMapping("/querylsit")
+    public List<Orderform> querylsit(){
+        return orderformService.list();
+    }
 
-    @PutMapping("/state")
-    public RespBean updateState(@RequestBody Orderform orderform) {
-        if (orderformService.updateState(orderform) == 1) {
-            return RespBean.ok("状态更新成功");
+    @CrossOrigin
+    @RequestMapping("/updateOrder")
+    public RespBean updateOrder(Orderform orderform){
+        System.out.println("进来了！！！！！！！！！！！！");
+        if(orderformService.updateById(orderform) == true){
+            return RespBean.ok("地址修改成功");
         }
-        return RespBean.error("状态修改失败");
-    }
-
-    /**
-     * 根据id查询
-     *
-     * @param id
-     * @return
-     */
-    @GetMapping("/get/{id}")
-    public RespBean getById(@PathVariable Integer id) {
-        Orderform byId = orderformService.getById(id);
-        return new RespBean(byId);
-    }
-
-
-    @PutMapping("/update")
-    public RespBean updateAddress(@RequestBody Orderform orderform) {
-        try {
-            orderformService.updateById(orderform);
-            return RespBean.ok("修改成功");
-        } catch (Exception e) {
-            e.printStackTrace();
-            return RespBean.error("地址修改失败");
-        }
-
+        return RespBean.error("地址修改失败");
     }
 
     /*
-     * mengqi
-     * 查询当天的订单总数
-     * */
+    * mengqi
+    * 查询当天的订单总数
+    * */
     @GetMapping("/orderformcount")
     @ResponseBody
-    public Integer orderformcount() {
+    public Integer orderformcount(){
         return orderformService.orderformcount();
     }
 
     /*
-     * mengqi
-     * 查询当天的销售总额
-     * */
+    * mengqi
+    * 查询当天的销售总额
+    * */
     @GetMapping("/totalsalescount")
     @ResponseBody
-    public Integer totalsalescount() {
+    public  Integer totalsalescount(){
         return orderformService.totalsalescount();
     }
 
@@ -101,7 +83,7 @@ public class OrderformController {
      * */
     @GetMapping("/yesterdaytotalsalescount")
     @ResponseBody
-    public Integer yesterdaytotalsalescount() {
+    public  Integer yesterdaytotalsalescount(){
         return orderformService.yesterdaytotalsalescount();
     }
 
@@ -111,49 +93,49 @@ public class OrderformController {
      * */
     @GetMapping("/weekcount")
     @ResponseBody
-    public Integer weekcount() {
+    public  Integer weekcount(){
         return orderformService.weekcount();
     }
 
     /*
-     * mengqi
-     * 查询近7天的订单数量
-     * */
+    * mengqi
+    * 查询近7天的订单数量
+    * */
     @GetMapping("/selectWeek")
     @ResponseBody
-    public Integer[] selectWeek() {
+    public Integer[] selectWeek(){
 
-        Week week = orderformService.selectWeek();
-        Integer[] in = new Integer[7];
-        in[0] = week.getDay7();
-        in[1] = week.getDay6();
-        in[2] = week.getDay5();
-        in[3] = week.getDay4();
-        in[4] = week.getDay3();
-        in[5] = week.getDay2();
-        in[6] = week.getDay1();
-        System.out.println("======================----" + in.toString());
+        Week week=orderformService.selectWeek();
+        Integer [] in=new Integer[7];
+            in[0]=week.getDay7();
+            in[1]=week.getDay6();
+            in[2]=week.getDay5();
+            in[3]=week.getDay4();
+            in[4]=week.getDay3();
+            in[5]=week.getDay2();
+            in[6]=week.getDay1();
+        System.out.println("======================----"+in.toString());
         return in;
     }
 
 
     /* mengqi
-     * 查询近7天的上周的订单数量
-     * */
+    * 查询近7天的上周的订单数量
+    * */
     @GetMapping("/yesterWeek")
     @ResponseBody
-    public Integer[] yesterWeek() {
+    public Integer[] yesterWeek(){
 
-        Week week = orderformService.yesterWeek();
-        Integer[] in = new Integer[7];
-        in[0] = week.getDay7();
-        in[1] = week.getDay6();
-        in[2] = week.getDay5();
-        in[3] = week.getDay4();
-        in[4] = week.getDay3();
-        in[5] = week.getDay2();
-        in[6] = week.getDay1();
-        System.out.println("======================----" + in.toString());
+        Week week=orderformService.yesterWeek();
+        Integer [] in=new Integer[7];
+        in[0]=week.getDay7();
+        in[1]=week.getDay6();
+        in[2]=week.getDay5();
+        in[3]=week.getDay4();
+        in[4]=week.getDay3();
+        in[5]=week.getDay2();
+        in[6]=week.getDay1();
+        System.out.println("======================----"+in.toString());
         return in;
     }
 
@@ -164,18 +146,18 @@ public class OrderformController {
      * */
     @GetMapping("/selectWeekMoney")
     @ResponseBody
-    public Double[] selectWeekMoney() {
+    public Double[] selectWeekMoney(){
 
-        WeekMoney week = orderformService.selectWeekMoney();
-        Double[] in = new Double[7];
-        in[0] = week.getDay7();
-        in[1] = week.getDay6();
-        in[2] = week.getDay5();
-        in[3] = week.getDay4();
-        in[4] = week.getDay3();
-        in[5] = week.getDay2();
-        in[6] = week.getDay1();
-        System.out.println("======================----" + in.toString());
+        WeekMoney week=orderformService.selectWeekMoney();
+        Double [] in=new Double[7];
+        in[0]=week.getDay7();
+        in[1]=week.getDay6();
+        in[2]=week.getDay5();
+        in[3]=week.getDay4();
+        in[4]=week.getDay3();
+        in[5]=week.getDay2();
+        in[6]=week.getDay1();
+        System.out.println("======================----"+in.toString());
         return in;
     }
 
@@ -185,23 +167,23 @@ public class OrderformController {
      * */
     @GetMapping("/yesterWeekMoney")
     @ResponseBody
-    public Double[] yesterWeekMoney() {
+    public Double[] yesterWeekMoney(){
 
-        WeekMoney week = orderformService.yesterWeekMoney();
-        Double[] in = new Double[7];
-        if (null != week) {
-            in[0] = week.getDay7();
-            in[1] = week.getDay6();
-            in[2] = week.getDay5();
-            in[3] = week.getDay4();
-            in[4] = week.getDay3();
-            in[5] = week.getDay2();
-            in[6] = week.getDay1();
-        } else {
-            for (int i = in.length - 1; i >= 0; i--) {
-                in[i] = 0.00;
-            }
-        }
+        WeekMoney week=orderformService.yesterWeekMoney();
+        Double [] in=new Double[7];
+         if(null!=week){
+            in[0]=week.getDay7();
+            in[1]=week.getDay6();
+            in[2]=week.getDay5();
+            in[3]=week.getDay4();
+            in[4]=week.getDay3();
+            in[5]=week.getDay2();
+            in[6]=week.getDay1();
+        }else{
+             for (int i = in.length - 1; i >= 0; i--) {
+                  in[i]=0.00;
+             }
+         }
 
         return in;
     }

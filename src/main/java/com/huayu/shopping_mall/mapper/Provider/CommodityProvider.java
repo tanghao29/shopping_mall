@@ -5,7 +5,7 @@ import com.huayu.shopping_mall.entity.Commodity;
 public class CommodityProvider {
 
     public String query(Commodity commodity){
-        StringBuffer stringBuffer=new StringBuffer("SELECT c.*, SUM(ce.`cenumber`) cenumber, cc.ccname ccname FROM`commodity` c INNER JOIN `commodityentry` ce INNER JOIN `commodityclassification` cc WHERE c.cid = ce.cid AND c.ccid = cc.ccid ");
+            StringBuffer stringBuffer=new StringBuffer("SELECT c.*, SUM(ce.`cenumber`) cenumber, cc.ccname ccname FROM`commodity` c INNER JOIN `commodityentry` ce INNER JOIN `commodityclassification` cc WHERE c.cid = ce.cid AND c.ccid = cc.ccid ");
 
         if(commodity.getCname()!=null&&commodity.getCname()!=""){
             stringBuffer.append("AND c.cname LIKE '%"+commodity.getCname()+"%'");
@@ -19,6 +19,9 @@ public class CommodityProvider {
             stringBuffer.append(" AND c.cstate='"+commodity.getCstate()+"'");
         }
 
+        if(commodity.getCshenhe()!=null&& commodity.getCshenhe()!=""){
+            stringBuffer.append(" AND c.cshenhe='"+commodity.getCshenhe()+"'");
+        }
 
         stringBuffer.append(" GROUP BY c.`cid`");
 

@@ -1,6 +1,7 @@
 package com.huayu.shopping_mall.web;
 
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.huayu.shopping_mall.entity.Commodity;
 import com.huayu.shopping_mall.service.ICommodityService;
 import com.huayu.shopping_mall.service.impl.CommodityServiceImpl;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.crypto.interfaces.PBEKey;
 import java.util.List;
 
 /**
@@ -32,13 +34,11 @@ public class CommodityController {
 
 @RequestMapping("/queryList")
     public List<Commodity> queryList(Commodity commodity){
-    System.out.println(iCommodityService.queryCOmmodityList(commodity));
         return iCommodityService.queryCOmmodityList(commodity);
     }
 
     @RequestMapping("/queryListCommodtiy")
     public List<Commodity> queryListCommodtiy(){
-
         return iCommodityService.queryListCommodtiy();
     }
 
@@ -88,5 +88,34 @@ public class CommodityController {
     @ResponseBody
     public Integer countCommodityentry(){
         return  commodityService.countCommodityentry();
+    }
+
+    @RequestMapping("/updatecshenhe")
+    public Integer updatecshenhe(Commodity commodity){
+
+        commodityService.updateById(commodity);
+        return 200;
+    }
+
+    @RequestMapping("/queryweishnhe")
+    public Integer queryweishnhe(){
+        QueryWrapper<Commodity> queryWrapper=new QueryWrapper<>();
+        queryWrapper.eq("cshenhe","未审核");
+        return commodityService.list(queryWrapper).size();
+    }
+
+
+    @RequestMapping("/queryweitongguo")
+    public Integer queryweitongguo(){
+        QueryWrapper<Commodity> queryWrapper=new QueryWrapper<>();
+        queryWrapper.eq("cshenhe","未通过");
+        return commodityService.list(queryWrapper).size();
+    }
+
+    @RequestMapping("/queryyitongguo")
+    public Integer queryyitongguo(){
+        QueryWrapper<Commodity> queryWrapper=new QueryWrapper<>();
+        queryWrapper.eq("cshenhe","已审核");
+        return commodityService.list(queryWrapper).size();
     }
 }

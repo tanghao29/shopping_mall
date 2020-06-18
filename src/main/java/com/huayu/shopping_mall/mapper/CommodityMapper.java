@@ -3,9 +3,7 @@ package com.huayu.shopping_mall.mapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.huayu.shopping_mall.entity.Commodity;
 import com.huayu.shopping_mall.mapper.Provider.CommodityProvider;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.SelectProvider;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -21,7 +19,7 @@ import java.util.List;
 public interface CommodityMapper extends BaseMapper<Commodity> {
     @Select("SELECT * FROM commodity c LEFT JOIN commodityentry ce ON c.cid=ce.cid  LEFT JOIN commodityclassification cc  ON c.ccid=cc.ccid ")
     List<Commodity> queryCOmmodityList();
-
+    
     /*
     * mengqi
     * 已下架
@@ -49,8 +47,12 @@ public interface CommodityMapper extends BaseMapper<Commodity> {
     * */
     @Select(" select count(1) from commodityentry ")
     Integer countCommodityentry();
-
 //    @Select("SELECT c.*, SUM(ce.`cenumber`) cenumber, cc.ccname ccname FROM`commodity` c INNER JOIN `commodityentry` ce INNER JOIN `commodityclassification` cc WHERE c.cid = ce.cid AND c.ccid = cc.ccid GROUP BY c.`cid`")
 @SelectProvider(type = CommodityProvider.class,method = "query")
     List<Commodity> queryCOmmodityList(Commodity commodity);
+
+    @Options(useGeneratedKeys = true, keyProperty = "cid", keyColumn = "cid")
+    @Insert("insert  into commodity (cname,cstate,ccid,cshenhe) values (#{cname},1,#{ccid},'未审核')")
+    int insertfanhuiid(Commodity commodity);
+
 }
