@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -16,7 +17,7 @@ import java.util.List;
  * @since 2020-06-04
  */
 @Data
-public class Jurisdiction  {
+public class Jurisdiction  implements Serializable {
 
 
     @TableId(value = "jid", type = IdType.AUTO)

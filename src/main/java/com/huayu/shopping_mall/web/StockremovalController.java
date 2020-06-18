@@ -17,4 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/shopping_mall/stockremoval")
 public class StockremovalController {
 
+
+
+
+
 }

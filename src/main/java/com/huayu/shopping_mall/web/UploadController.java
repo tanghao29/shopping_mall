@@ -26,7 +26,6 @@ public class UploadController {
      */
     @RequestMapping(value = "/uploadImage")
     public RespBean uploadImage(MultipartFile file){
-System.out.println(file+"212");
 
         String url = uploadService.uploadImage(file);
         return new RespBean("上传成功",url);

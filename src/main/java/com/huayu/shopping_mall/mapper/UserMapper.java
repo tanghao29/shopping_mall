@@ -3,6 +3,7 @@ package com.huayu.shopping_mall.mapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.huayu.shopping_mall.entity.User;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.SelectProvider;
 import org.apache.ibatis.annotations.Update;
 
@@ -25,4 +26,19 @@ public interface UserMapper extends BaseMapper<User> {
     @SelectProvider(type = com.huayu.shopping_mall.dynamic.User.class,method = "searchUser")
     public List<User> searchUser(User user);
 
+    /**
+     * 根据用户名查询用户
+     * @param uname
+     * @return
+     */
+    @Select("select * from user where uname=#{uname}")
+    User getByUsername(String uname);
+
+    /**
+     * 只查询name
+     * @param uname
+     * @return
+     */
+    @Select("select * from user where uname=#{uname}")
+    User getName(String uname);
 }

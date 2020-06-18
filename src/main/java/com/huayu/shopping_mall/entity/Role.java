@@ -4,6 +4,9 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 
+import java.io.Serializable;
+import java.util.List;
+
 /**
  * <p>
  *
@@ -13,7 +16,10 @@ import lombok.Data;
  * @since 2020-06-04
  */
 @Data
-public class Role {
+public class Role implements Serializable {
+
+
+
 
     private static final long serialVersionUID = 1L;
 
