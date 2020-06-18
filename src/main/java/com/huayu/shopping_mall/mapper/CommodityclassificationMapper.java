@@ -45,4 +45,7 @@ public interface CommodityclassificationMapper extends BaseMapper<Commodityclass
     @SelectProvider(type = SearchCommodityclassification.class,method = "categoryData")
     Integer categoryData(Integer time,String ccname);
 
+    @Select("select  count(c.cid) value , com.ccname  name from commodityclassification com left join commodity c on com.ccid=c.ccid group by com.ccid ")
+    public List<CommodityClassificationData> countliebie();
+
 }

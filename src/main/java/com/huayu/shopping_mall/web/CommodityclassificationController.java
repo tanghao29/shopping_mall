@@ -139,4 +139,33 @@ return 200;
         return res;
     }
 
+    @GetMapping("/jymq")
+    @ResponseBody
+    public List<String> jymq(){
+        return commodityclassificationService.jymq();
+    }
+
+    @GetMapping("/countliebie")
+    @ResponseBody
+    public List<CommodityClassificationData> countliebie(){
+            List<CommodityClassificationData> res=new ArrayList();
+
+            List<String>list=commodityclassificationService.jymq();
+            List<CommodityClassificationData> lis2=commodityclassificationService.countliebie();
+
+            System.out.println("==============>"+list.size()+":"+lis2.size());
+        for (int i = 0; i < list.size(); i++) {
+            CommodityClassificationData commodityClassificationData=new CommodityClassificationData();
+            if(list.get(i).equals(lis2.get(i).getName())){
+                commodityClassificationData.setValue(lis2.get(i).getValue());
+                commodityClassificationData.setName(lis2.get(i).getName());
+                res.add(commodityClassificationData);
+            }
+        }
+        return res;
+    }
+
+
+
+
 }

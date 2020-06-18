@@ -57,4 +57,14 @@ public class CommodityclassificationServiceImpl extends ServiceImpl<Commoditycla
         }}
         return in;
     }
+
+
+    public List<String> jymq(){
+        return commodityclassificationMapper.category();
+    }
+
+    public List<CommodityClassificationData> countliebie(){
+        return commodityclassificationMapper.countliebie();
+    }
+
 }
