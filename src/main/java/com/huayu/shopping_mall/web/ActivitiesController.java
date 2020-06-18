@@ -33,6 +33,11 @@ public class ActivitiesController {
         return activitiesMapper.queryActiviries(Integer.valueOf(skid));
     }
 
+    @RequestMapping("/querylist")
+    public List<Activities> querylist(){
+        return iActivitiesService.list();
+    }
+
     @RequestMapping("/updatestate")
     public Integer updatestate(Activities activities){
         iActivitiesService.updateById(activities);

@@ -35,16 +35,15 @@ public class Seckill  {
 
     private String skstate;
 
-//    @DateTimeFormat(pattern="yyyy-MM-dd")
     @JsonFormat(pattern="yyyy-MM-dd",timezone = "Asia/Shanghai")
     private Date skstarttime;
 
-//    @DateTimeFormat(pattern="yyyy-MM-dd")
     @JsonFormat(pattern="yyyy-MM-dd",timezone = "Asia/Shanghai")
     private Date skendtime;
 
     @TableField(exist = false)
     private Date skstarttimeover;
+
     @TableField(exist = false)
     private Date skendtimeover;
 

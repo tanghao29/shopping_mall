@@ -34,14 +34,13 @@ public class SeckillServiceImpl extends ServiceImpl<SeckillMapper, Seckill> impl
     public List<Seckill> queryLikeSeckill(Seckill seckill) {
 
         List<Seckill> likeSeckill=seckillMapper.queryLikeSeckill(seckill);
+
         for (Seckill seckill1:likeSeckill){
             QueryWrapper<Activities> activitiesQueryWrapper=new QueryWrapper<>();
             activitiesQueryWrapper.eq("skid",seckill1.getSkid());
             seckill1.setSknubmer(activitiesMapper.selectList(activitiesQueryWrapper).size());
-             Date date=new Date();
+            Date date=new Date();
 
-             System.out.println(date.compareTo(seckill1.getSkendtime())+1+"*************************************");
-             System.out.println(seckill1.getSkendtime()+"*************************************");
              if(date.compareTo(seckill1.getSkstarttime())+1 >= 0 && date.compareTo(seckill1.getSkendtime())-1 <= 0 ){
                 seckill1.setState("活动进行中");
              }else {
