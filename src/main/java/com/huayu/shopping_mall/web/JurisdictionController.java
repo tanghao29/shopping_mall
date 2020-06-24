@@ -23,44 +23,44 @@ public class JurisdictionController {
     @Autowired
     JurisdictionServiceImpl jurisdictionService;
 
-    /*
-     * mengqi
-     * 查询所有权限
-     * */
-    @GetMapping("/queryAllJur")
-    @ResponseBody
-    @CrossOrigin
-    public List<Jurisdiction> queryAllJur(){
-
-        List<Jurisdiction> requestlist=new ArrayList<>();
-        List<Jurisdiction> list=jurisdictionService.list(null);
-        for (int i = 0; i < list.size(); i++) {
-            if(null==list.get(i).getJsuperior()){
-                requestlist.add(list.get(i));
-            }
-
-        }
-
-
-
-            for (int i1 = 0; i1 < requestlist.size(); i1++) {
-                List<Jurisdiction> aadlist=new ArrayList<>();
-                for (int i = 0; i < list.size(); i++) {
-                    if (requestlist.get(i1).getJid() == list.get(i).getJsuperior()) {
-                        Jurisdiction jurisdiction=new Jurisdiction();
-                        jurisdiction.setJid(list.get(i).getJid());
-                        jurisdiction.setJname(list.get(i).getJname());
-                        aadlist.add(jurisdiction);
-
-                    }
-                }
-
-                requestlist.get(i1).setChildren(aadlist);
-
-            }
-
-        return requestlist;
-    }
+//    /*
+//     * mengqi
+//     * 查询所有权限
+//     * */
+//    @GetMapping("/queryAllJur")
+//    @ResponseBody
+//    @CrossOrigin
+//    public List<Jurisdiction> queryAllJur(){
+//
+//        List<Jurisdiction> requestlist=new ArrayList<>();
+//        List<Jurisdiction> list=jurisdictionService.list(null);
+//        for (int i = 0; i < list.size(); i++) {
+//            if(null==list.get(i).getJsuperior()){
+//                requestlist.add(list.get(i));
+//            }
+//
+//        }
+//
+//
+//
+//            for (int i1 = 0; i1 < requestlist.size(); i1++) {
+//                List<Jurisdiction> aadlist=new ArrayList<>();
+//                for (int i = 0; i < list.size(); i++) {
+//                    if (requestlist.get(i1).getJid() == list.get(i).getJsuperior()) {
+//                        Jurisdiction jurisdiction=new Jurisdiction();
+//                        jurisdiction.setJid(list.get(i).getJid());
+//                        jurisdiction.setJname(list.get(i).getJname());
+//                        aadlist.add(jurisdiction);
+//
+//                    }
+//                }
+//
+//                requestlist.get(i1).setChildren(aadlist);
+//
+//            }
+//
+//        return requestlist;
+//    }
 
 
 

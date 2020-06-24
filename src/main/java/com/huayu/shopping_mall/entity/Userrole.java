@@ -1,6 +1,7 @@
 package com.huayu.shopping_mall.entity;
 
 
+import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -16,9 +17,9 @@ import java.io.Serializable;
 @Data
 public class Userrole  {
 
-
+    @TableId
     private Integer uid;
-
+    @TableId
     private Integer rid;
 
 

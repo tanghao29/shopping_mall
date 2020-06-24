@@ -1,5 +1,7 @@
 package com.huayu.shopping_mall.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 
 /**
@@ -14,9 +16,9 @@ import lombok.Data;
 public class Roleauthority  {
 
 
-
+    @TableId
     private Integer rid;
-
+    @TableId
     private Integer jid;
 
 

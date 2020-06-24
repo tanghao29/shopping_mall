@@ -29,7 +29,7 @@ public class SeckillController {
     @RequestMapping("/queryList")
     @ResponseBody
     public List<Seckill> queryList(Seckill seckill){
-       System.out.println(seckill.toString());
+        System.out.println(seckill.toString()+"/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/");
         return iSeckillService.queryLikeSeckill(seckill);
     }
 

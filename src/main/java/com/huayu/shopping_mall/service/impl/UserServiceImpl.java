@@ -1,5 +1,6 @@
 package com.huayu.shopping_mall.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.huayu.shopping_mall.entity.User;
 import com.huayu.shopping_mall.mapper.UserMapper;
@@ -22,8 +23,37 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
 
     @Autowired
     UserMapper userMapper;
+    @Autowired
+    RoleMapper roleMapper;
+    @Autowired
+    JurisdictionMapper jurisdictionMapper;
 
-    public void updateUserStatu(int uid,String ustate){
+
+    @Override
+    public User findAllUserInfoByUsername(String uname) {
+        System.out.println("123456789999999999999999999999");
+        QueryWrapper<User> userQueryWrapper=new QueryWrapper<>();
+        userQueryWrapper.eq("uname",uname);
+        User user = userMapper.selectOne(userQueryWrapper);
+//       userMapper.getName(uname);
+        System.out.println(user.toString()+"/******/*/*/*/*/*/*/*/*");
+
+
+
+        // 用户的角色集合
+        List<Role> roleList = roleMapper.findRoleListByUserId(user.getUid());
+        // 用户的权限集合
+        List<Jurisdiction> permissionList = jurisdictionMapper.findPermissionByUserId(user.getUid());
+
+        user.setRoleList(roleList);
+        user.setPermissionList(permissionList);
+
+        return user;
+    }
+
+
+
+    public void updateUserStatu(int uid, String ustate){
         userMapper.updateuserstatu(uid,ustate);
     }
 
