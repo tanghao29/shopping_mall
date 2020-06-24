@@ -17,8 +17,8 @@ import java.util.List;
  */
 @Mapper
 public interface CommodityMapper extends BaseMapper<Commodity> {
-    @Select("SELECT * FROM commodity c LEFT JOIN commodityentry ce ON c.cid=ce.cid  LEFT JOIN commodityclassification cc  ON c.ccid=cc.ccid ")
-    List<Commodity> queryCOmmodityList();
+//    @Select("SELECT * FROM commodity c LEFT JOIN commodityentry ce ON c.cid=ce.cid  LEFT JOIN commodityclassification cc  ON c.ccid=cc.ccid ")
+//    List<Commodity> queryCOmmodityList();
     
     /*
     * mengqi

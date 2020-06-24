@@ -1,11 +1,11 @@
 //package com.huayu.shopping_mall;
 //
-//import com.baomidou.mybatisplus.exceptions.MybatisPlusException;
+//import com.baomidou.mybatisplus.core.exceptions.MybatisPlusException;
+//import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 //import com.baomidou.mybatisplus.generator.AutoGenerator;
 //import com.baomidou.mybatisplus.generator.InjectionConfig;
 //import com.baomidou.mybatisplus.generator.config.*;
 //import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
-//import com.baomidou.mybatisplus.toolkit.StringUtils;
 //
 //import java.util.ArrayList;
 //import java.util.List;

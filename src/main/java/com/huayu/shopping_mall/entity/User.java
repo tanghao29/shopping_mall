@@ -1,11 +1,13 @@
 package com.huayu.shopping_mall.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Set;
 
 /**
  * <p>
@@ -15,18 +17,22 @@ import java.util.List;
  * @author mq
  * @since 2020-06-04
  */
+@Data
 public class User implements Serializable {
 
     /**
      * 角色集合
      */
+    @TableField(exist = false)
     private List<Role> roleList;
     /**
      * 权限集合
      */
+    @TableField(exist = false)
     private List<Jurisdiction> permissionList;
 
-    private String[] roles;
+    @TableField(exist = false)
+    private Set<String> roles;
 
 
     @TableId(value = "uid", type = IdType.AUTO)
@@ -57,14 +63,6 @@ public class User implements Serializable {
 
     public void setPermissionList(List<Jurisdiction> permissionList) {
         this.permissionList = permissionList;
-    }
-
-    public String[] getRoles() {
-        return roles;
-    }
-
-    public void setRoles(String[] roles) {
-        this.roles = roles;
     }
 
 

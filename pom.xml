@@ -57,18 +57,24 @@
             <version>1.4.0</version>
         </dependency>
 
-        <!-- shiro+redis缓存插件 -->
+        <!-- springBoot 整合 shiro -->
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-spring-boot-starter</artifactId>
+            <version>1.4.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-web</artifactId>
+            <version>1.4.0</version>
+        </dependency>
+
+        <!-- shiro-redis -->
         <dependency>
             <groupId>org.crazycake</groupId>
             <artifactId>shiro-redis</artifactId>
             <version>3.1.0</version>
-        </dependency>
-
-        <!--slf4j-->
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>1.1.11</version>
         </dependency>
 
         <dependency>
@@ -101,10 +107,27 @@
             </exclusions>
         </dependency>
 
+<!--        <dependency>-->
+<!--            <groupId>org.freemarker</groupId>-->
+<!--            <artifactId>freemarker</artifactId>-->
+<!--            <version>2.3.20</version>-->
+<!--        </dependency>-->
+
         <dependency>
-            <groupId>org.freemarker</groupId>
-            <artifactId>freemarker</artifactId>
-            <version>2.3.20</version>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+            <!--	剔除依赖		-->
+            <exclusions>
+                <exclusion>
+                    <groupId>io.lettuce</groupId>
+                    <artifactId>lettuce-core</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
     </dependencies>

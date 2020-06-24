@@ -1,5 +1,6 @@
 package com.huayu.shopping_mall.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.huayu.shopping_mall.entity.Jurisdiction;
 import com.huayu.shopping_mall.entity.Role;
@@ -34,7 +35,14 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
 
     @Override
     public User findAllUserInfoByUsername(String uname) {
-        User user = userMapper.getName(uname);
+        System.out.println("123456789999999999999999999999");
+        QueryWrapper<User> userQueryWrapper=new QueryWrapper<>();
+        userQueryWrapper.eq("uname",uname);
+        User user = userMapper.selectOne(userQueryWrapper);
+//       userMapper.getName(uname);
+        System.out.println(user.toString()+"/******/*/*/*/*/*/*/*/*");
+
+
 
         // 用户的角色集合
         List<Role> roleList = roleMapper.findRoleListByUserId(user.getUid());
