@@ -95,4 +95,7 @@ public interface OrderformMapper extends BaseMapper<Orderform> {
     @Select("select (select sum(ofmoney) from  orderform where ofstate='1' and  date( ofdate) = date_sub(curdate(),interval 7 day) ) as day1,(select sum(ofmoney) from  orderform where ofstate='1' and  date( ofdate) = date_sub(curdate(),interval 8 day) ) as day2,(select sum(ofmoney) from  orderform where ofstate='1' and  date( ofdate) = date_sub(curdate(),interval 9 day) ) as day3,(select sum(ofmoney) from  orderform where ofstate='1' and  date( ofdate) = date_sub(curdate(),interval 10 day) ) as day4,(select sum(ofmoney) from  orderform where ofstate='1' and  date( ofdate) = date_sub(curdate(),interval 11 day) ) as day5,(select sum(ofmoney) from  orderform where ofstate='1' and  date( ofdate) = date_sub(curdate(),interval 12 day) ) as day6,(select sum(ofmoney) from  orderform where ofstate='1' and  date( ofdate) = date_sub(curdate(),interval 13 day) ) as day7 ")
     public WeekMoney yesterWeekMoney();
 
+
+    @Select(" select * from orderform where ofstate='1' order by ofdate desc limit 8  ")
+    public List<Orderform> thelatestorder();
 }

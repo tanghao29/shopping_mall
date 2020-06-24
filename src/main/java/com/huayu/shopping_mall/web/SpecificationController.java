@@ -15,7 +15,6 @@ import java.util.List;
  *
  * @author mq
  * @since 2020-06-04
- *
  */
 @RestController
 @RequestMapping("/shopping_mall/specification")

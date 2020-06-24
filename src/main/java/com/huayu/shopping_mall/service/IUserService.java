@@ -13,12 +13,4 @@ import com.huayu.shopping_mall.entity.User;
  */
 public interface IUserService extends IService<User> {
 
-    /**
-     * 获取全部用户信息，包括角色，权限
-     */
-
-    User findAllUserInfoByUsername(String uname);
-
-
-
 }

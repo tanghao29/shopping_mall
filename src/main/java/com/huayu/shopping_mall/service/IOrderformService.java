@@ -24,17 +24,5 @@ public interface IOrderformService extends IService<Orderform> {
      */
     RespPageBean getOrderByPage(Integer page, Integer size, Orderform orderform, Date[] beginDate);
 
-    /**
-     * 修改订单地址
-     * @param orderform
-     * @return
-     */
     Integer updateOrder(Orderform orderform);
-
-    /**
-     * 修改订单状态
-     * @param orderform
-     * @return
-     */
-    Integer updateState(Orderform orderform);
 }

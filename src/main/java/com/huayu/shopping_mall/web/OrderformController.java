@@ -22,7 +22,6 @@ import java.util.List;
  * @since 2020-06-04
  */
 @RestController
-@CrossOrigin
 @RequestMapping("/shopping_mall/orderform")
 public class OrderformController {
 
@@ -42,16 +41,9 @@ public class OrderformController {
         return orderformService.getOrderByPage(page,size,orderform,beginDate);
     }
 
-    @RequestMapping("/querylsit")
-    public List<Orderform> querylsit(){
-        return orderformService.list();
-    }
-
-    @CrossOrigin
-    @RequestMapping("/updateOrder")
-    public RespBean updateOrder(Orderform orderform){
-        System.out.println("进来了！！！！！！！！！！！！");
-        if(orderformService.updateById(orderform) == true){
+    @PutMapping("/")
+    public RespBean updateOrder(@RequestBody Orderform orderform){
+        if(orderformService.updateOrder(orderform) == 1){
             return RespBean.ok("地址修改成功");
         }
         return RespBean.error("地址修改失败");
@@ -128,13 +120,45 @@ public class OrderformController {
 
         Week week=orderformService.yesterWeek();
         Integer [] in=new Integer[7];
-        in[0]=week.getDay7();
-        in[1]=week.getDay6();
-        in[2]=week.getDay5();
-        in[3]=week.getDay4();
-        in[4]=week.getDay3();
-        in[5]=week.getDay2();
-        in[6]=week.getDay1();
+        if(null==week.getDay7()){
+            in[0]=0;
+        }else{
+            in[0]=week.getDay7();
+        }
+        if(null==week.getDay6()){
+            in[1]=0;
+        }else{
+            in[1]=week.getDay6();
+        }
+
+        if(null==week.getDay5()){
+            in[2]=0;
+        }else{
+            in[2]=week.getDay5();
+        }
+
+        if(null==week.getDay4()){
+            in[3]=0;
+        }else{
+            in[3]=week.getDay4();
+        }
+        if(null==week.getDay3()){
+            in[4]=0;
+        }else{
+            in[4]=week.getDay3();
+        }
+
+        if(null==week.getDay2()){
+            in[5]=0;
+        }else{
+            in[5]=week.getDay2();
+        }
+        if(null==week.getDay1()){
+            in[6]=0;
+        }else{
+            in[6]=week.getDay1();
+        }
+
         System.out.println("======================----"+in.toString());
         return in;
     }
@@ -150,14 +174,45 @@ public class OrderformController {
 
         WeekMoney week=orderformService.selectWeekMoney();
         Double [] in=new Double[7];
-        in[0]=week.getDay7();
-        in[1]=week.getDay6();
-        in[2]=week.getDay5();
-        in[3]=week.getDay4();
-        in[4]=week.getDay3();
-        in[5]=week.getDay2();
-        in[6]=week.getDay1();
-        System.out.println("======================----"+in.toString());
+        if(null==week.getDay7()){
+            in[0]=0.00;
+        }else{
+            in[0]=week.getDay7();
+        }
+        if(null==week.getDay6()){
+            in[1]=0.00;
+        }else{
+            in[1]=week.getDay6();
+        }
+
+        if(null==week.getDay5()){
+            in[2]=0.00;
+        }else{
+            in[2]=week.getDay5();
+        }
+
+        if(null==week.getDay4()){
+            in[3]=0.00;
+        }else{
+            in[3]=week.getDay4();
+        }
+        if(null==week.getDay3()){
+            in[4]=0.00;
+        }else{
+            in[4]=week.getDay3();
+        }
+
+        if(null==week.getDay2()){
+            in[5]=0.00;
+        }else{
+            in[5]=week.getDay2();
+        }
+        if(null==week.getDay1()){
+            in[6]=0.00;
+        }else{
+            in[6]=week.getDay1();
+        }
+
         return in;
     }
 
@@ -171,21 +226,53 @@ public class OrderformController {
 
         WeekMoney week=orderformService.yesterWeekMoney();
         Double [] in=new Double[7];
-         if(null!=week){
-            in[0]=week.getDay7();
-            in[1]=week.getDay6();
-            in[2]=week.getDay5();
-            in[3]=week.getDay4();
-            in[4]=week.getDay3();
-            in[5]=week.getDay2();
-            in[6]=week.getDay1();
+        if(null==week.getDay7()){
+            in[0]=0.00;
         }else{
-             for (int i = in.length - 1; i >= 0; i--) {
-                  in[i]=0.00;
-             }
-         }
+            in[0]=week.getDay7();
+        }
+        if(null==week.getDay6()){
+            in[1]=0.00;
+        }else{
+            in[1]=week.getDay6();
+        }
+
+        if(null==week.getDay5()){
+            in[2]=0.00;
+        }else{
+            in[2]=week.getDay5();
+        }
+
+        if(null==week.getDay4()){
+            in[3]=0.00;
+        }else{
+            in[3]=week.getDay4();
+        }
+        if(null==week.getDay3()){
+            in[4]=0.00;
+        }else{
+            in[4]=week.getDay3();
+        }
+
+        if(null==week.getDay2()){
+            in[5]=0.00;
+        }else{
+            in[5]=week.getDay2();
+        }
+        if(null==week.getDay1()){
+            in[6]=0.00;
+        }else{
+            in[6]=week.getDay1();
+        }
 
         return in;
+    }
+
+
+    @GetMapping("/thelatestorder")
+    @ResponseBody
+    public List<Orderform> thelatestorder(){
+        return orderformService.thelatestorder();
     }
 
 }

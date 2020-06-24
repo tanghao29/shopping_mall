@@ -1,7 +1,6 @@
 package com.huayu.shopping_mall.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
@@ -43,7 +42,6 @@ public class Orderform implements Serializable {
 
     private String ofshsite;
 
-    @TableField(exist = false)
     private Integer xuid;
 
 }

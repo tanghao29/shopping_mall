@@ -1,16 +1,15 @@
 package com.huayu.shopping_mall.web;
 
 
-import com.huayu.shopping_mall.entity.Commodity;
 import com.huayu.shopping_mall.entity.Commodityentry;
-import com.huayu.shopping_mall.mapper.CommodityMapper;
-import com.huayu.shopping_mall.service.ICommodityService;
 import com.huayu.shopping_mall.service.ICommodityentryService;
 import com.huayu.shopping_mall.service.impl.CommodityentryServiceImpl;
 import com.huayu.shopping_mall.utils.RespPageBean;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Date;
 import java.util.List;
@@ -33,11 +32,6 @@ public class CommodityentryController {
     @Autowired
     ICommodityentryService iCommodityentryService;
 
-    @Autowired
-    ICommodityService iCommodityService;
-
-    @Autowired
-    CommodityMapper commodityMapper;
     /**
      * 分页查询入库列表
      * @param page
@@ -62,31 +56,6 @@ public class CommodityentryController {
 
         return iCommodityentryService.getById(ceid);
     }
-
-    @CrossOrigin
-    @RequestMapping("/save")
-    public Integer save( Commodityentry commodityentry){
-        if(commodityentry.getCid()!=null&&!commodityentry.getCid().equals("")){
-            System.out.println(commodityentry.toString()+"*******************");
-            Commodity commodity=new Commodity();
-            commodity.setCname(commodityentry.getCname());
-            commodity.setCcid(commodityentry.getCcid());
-            commodityentry.setCid(commodityMapper.insertfanhuiid(commodity));
-        }
-
-        commodityentry.setCedate(new Date());
-        iCommodityentryService.save(commodityentry);
-        return 200;
-    }
-
-    @RequestMapping("/updatecenumber")
-    public Integer updatecenumber(Commodityentry commodityentry){
-
-        iCommodityentryService.updateById(commodityentry);
-        return 200;
-    }
-
-
 
 
 

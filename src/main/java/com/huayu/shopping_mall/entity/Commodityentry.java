@@ -29,9 +29,6 @@ public class Commodityentry implements Serializable {
 
     private Integer cid;
 
-    @TableField(exist = false)
-    private String cname;
-
     private Integer cenumber;
 
     private String ceimg;
@@ -53,23 +50,10 @@ public class Commodityentry implements Serializable {
 
     @TableField(exist = false)
     private Commodity commodity;
-
     @TableField(exist = false)
     private User user;
-
     @TableField(exist = false)
     private String uname;
-
-    private String cecoloutr;
-
-    @TableField(exist = false)
-    private Integer ccid;
-
-
-
-
-
-
 
 
 

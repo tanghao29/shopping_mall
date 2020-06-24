@@ -45,12 +45,5 @@ public class Commodity  {
 
     private Integer ccid;
 
-    @TableField(exist = false)
-    private Integer number;
-
-    private String cshenhe;
-
-
-
 
 }

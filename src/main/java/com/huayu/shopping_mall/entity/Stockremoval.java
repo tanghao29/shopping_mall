@@ -2,7 +2,6 @@ package com.huayu.shopping_mall.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import java.util.Date;
@@ -29,9 +28,5 @@ public class Stockremoval  {
 
     private Integer ofid;
 
-    private String state;
-
-    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "Asia/Shanghai")
-    private String time;
 
 }

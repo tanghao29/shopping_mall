@@ -34,21 +34,18 @@ public class OrderformServiceImpl extends ServiceImpl<OrderformMapper, Orderform
             page = (page - 1) * size;
         }
         List<Orderform> data =  orderformMapper.getOrderByPage(page, size, orderform, beginDate);
+        System.out.println("---------"+data);
         Long total = orderformMapper.getTotal(orderform, beginDate);
+        System.out.println("---------"+total);
         RespPageBean bean = new RespPageBean();
         bean.setTotal(total);
         bean.setData(data);
+        System.out.println("------------------"+bean);
         return bean;
     }
 
     @Override
     public Integer updateOrder(Orderform orderform) {
-        return orderformMapper.updateByPrimaryKeySelective(orderform);
-    }
-
-
-    @Override
-    public Integer updateState(Orderform orderform) {
         return orderformMapper.updateByPrimaryKeySelective(orderform);
     }
 
@@ -80,5 +77,9 @@ public class OrderformServiceImpl extends ServiceImpl<OrderformMapper, Orderform
 
     public WeekMoney yesterWeekMoney(){
         return orderformMapper.yesterWeekMoney();
+    }
+
+    public List<Orderform> thelatestorder(){
+        return orderformMapper.thelatestorder();
     }
 }
