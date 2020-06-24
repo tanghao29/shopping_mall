@@ -27,7 +27,7 @@
             and o.ofshsite like concat('%',#{order.ofshsite},'%')
         </if>
         <if test="order.ofstate != null and order.ofstate != ''">
-            and o.ofstate = #{order.ofstate}
+            and o.ofstate like concat('%',#{order.ofstate},'%')
         </if>
         <if test="beginDate != null ">
             and o.ofdate between #{beginDate[0]} and #{beginDate[1]}
@@ -52,7 +52,7 @@
                     and o.ofshsite like concat('%',#{order.ofshsite},'%')
                 </if>
                 <if test="order.ofstate != null and order.ofstate != ''">
-                    and o.ofstate = #{order.ofstate}
+                    and o.ofstate like concat('%',#{order.ofstate},'%')
                 </if>
                 <if test="beginDate != null ">
                     and o.ofdate between #{beginDate[0]} and #{beginDate[1]}

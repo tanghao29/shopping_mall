@@ -1,14 +1,11 @@
-package com.huayu.shopping_mall.Config;
+package com.huayu.shopping_mall.config;
 
-import com.huayu.shopping_mall.Config.MyRealm;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
-import org.apache.shiro.crypto.hash.SimpleHash;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.session.mgt.SessionManager;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
-import org.apache.shiro.web.servlet.SimpleCookie;
 import org.crazycake.shiro.RedisCacheManager;
 import org.crazycake.shiro.RedisManager;
 import org.crazycake.shiro.RedisSessionDAO;
@@ -53,7 +50,7 @@ public class MyShiroConfig {
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
         //自定义过滤器
         LinkedHashMap<String, Filter> filtsMap=new LinkedHashMap<String, Filter>();
-        filtsMap.put("authc",new AuthenticatingFilterOverride() );
+        filtsMap.put("authc",new com.huayu.shopping_mall.Config.AuthenticatingFilterOverride() );
         shiroFilterFactoryBean.setFilters(filtsMap);
         return shiroFilterFactoryBean;
     }
@@ -75,7 +72,7 @@ public class MyShiroConfig {
      */
     @Bean
     public SessionManager sessionManager() {
-        MySessionManager mySessionManager = new MySessionManager();
+        com.huayu.shopping_mall.Config.MySessionManager mySessionManager = new com.huayu.shopping_mall.Config.MySessionManager();
         mySessionManager.setSessionDAO(redisSessionDAO());
         return mySessionManager;
     }
